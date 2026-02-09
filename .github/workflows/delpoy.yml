@@ -1,24 +1,23 @@
+name: Cd
 on:
   push:
     branches:
-      - dev
+      - test/cd
 
 env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
   ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
   IMAGE_TAG: ${{ github.sha }}
+  APP_NAME: starve-stop
 
-# =========================
-# 1️⃣ CI: Build & Push
-# =========================
 jobs:
   build-and-push:
-    name: Build & Push to ECR
+    name: build & push to ECR
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -27,10 +26,10 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Grant execute permission for gradlew
+      - name: Grant Execute Permission For gradlew
         run: chmod +x gradlew
 
-      - name: Build with Gradle
+      - name: Build Jar
         run: ./gradlew clean build
 
       - name: Configure AWS credentials
@@ -47,3 +46,34 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    needs: build-and-push
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST_1 }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+
+          envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,APP_NAME
+
+          script: |
+            echo "ECR_REGISTRY=$ECR_REGISTRY"
+            echo "ECR_REPOSITORY=$ECR_REPOSITORY"
+            echo "IMAGE_TAG=$IMAGE_TAG"
+            echo "${{ secrets.APPLICATION }}" > .env
+
+            docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+            docker stop $APP_NAME || true
+            docker rm $APP_NAME || true
+            docker run -d \
+              --env-file .env \
+              --name $APP_NAME \
+              -p 8080:8080 \
+              $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
