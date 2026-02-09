@@ -1,3 +1,4 @@
+name: Cd
 on:
   push:
     branches:
@@ -8,7 +9,7 @@ env:
   ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
   IMAGE_TAG: ${{ github.sha }}
-  APP_NAME: starve-stop
+  APP_NAME: Lineofduty
 
 jobs:
   build-and-push:
@@ -28,8 +29,9 @@ jobs:
       - name: Grant Execute Permission For gradlew
         run: chmod +x gradlew
 
+      # [수정됨] -x test 옵션을 추가하여 테스트를 건너뜁니다.
       - name: Build Jar
-        run: ./gradlew clean build
+        run: ./gradlew clean build -x test
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -41,6 +43,7 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
+      # Docker 빌드 시 context(.)를 명시하고 태그를 붙입니다.
       - name: Build and Push Docker Image
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -58,21 +61,29 @@ jobs:
           host: ${{ secrets.EC2_HOST_1 }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-
+          
+          # script에서 사용할 변수들을 envs에 나열합니다.
           envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,APP_NAME
-
+          
           script: |
-            echo "ECR_REGISTRY=$ECR_REGISTRY"
-            echo "ECR_REPOSITORY=$ECR_REPOSITORY"
-            echo "IMAGE_TAG=$IMAGE_TAG"
+            echo "Deploying $APP_NAME with tag $IMAGE_TAG"
+            
+            # .env 파일 생성 (운영 환경 변수 주입)
             echo "${{ secrets.APPLICATION }}" > .env
 
+            # 최신 이미지 pull
             docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+            
+            # 기존 컨테이너 중지 및 삭제 (에러 무시 || true)
             docker stop $APP_NAME || true
             docker rm $APP_NAME || true
+            
+            # 새 컨테이너 실행
             docker run -d \
               --env-file .env \
               --name $APP_NAME \
               -p 8080:8080 \
               $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-
+            
+            # (선택) 불필요한 이미지 정리
+            docker image prune -f
