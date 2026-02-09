@@ -1,8 +1,7 @@
-name: Cd
 on:
   push:
     branches:
-      - test/cd
+      - product
 
 env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
