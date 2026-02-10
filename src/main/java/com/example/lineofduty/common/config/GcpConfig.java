@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,14 +33,27 @@ public class GcpConfig {
 
     @Bean
     public GoogleCredentials googleCredentials() throws IOException {
-        // privateKey의 줄바꿈 문자 처리
-        // 환경 변수로 들어올 때 "\\n"으로 들어오는 경우와 "\n"으로 들어오는 경우를 모두 고려
-        String fixedPrivateKey = privateKey.replace("\\n", "\n");
-        
-        // 혹시 모를 따옴표 제거 (필요한 경우에만)
+        String fixedPrivateKey = privateKey;
+
+        // 1. 따옴표 제거
         if (fixedPrivateKey.startsWith("\"") && fixedPrivateKey.endsWith("\"")) {
             fixedPrivateKey = fixedPrivateKey.substring(1, fixedPrivateKey.length() - 1);
         }
+
+        // 2. Base64 인코딩 여부 확인 및 디코딩
+        // "-----BEGIN"으로 시작하지 않으면 Base64로 인코딩된 값으로 간주
+        if (!fixedPrivateKey.contains("-----BEGIN PRIVATE KEY-----")) {
+            try {
+                byte[] decodedBytes = Base64.getDecoder().decode(fixedPrivateKey);
+                fixedPrivateKey = new String(decodedBytes, StandardCharsets.UTF_8);
+            } catch (IllegalArgumentException e) {
+                // Base64 디코딩 실패 시, 기존 방식대로 처리 시도
+                // (로그를 남기면 좋겠지만 여기선 생략)
+            }
+        }
+
+        // 3. 줄바꿈 문자 처리 (Base64 디코딩 후에도 필요할 수 있음, 혹은 Plain Text일 경우)
+        fixedPrivateKey = fixedPrivateKey.replace("\\n", "\n");
 
         // 2. JSON 구조를 Map으로 생성
         Map<String, Object> jsonMap = new HashMap<>();
@@ -57,7 +71,6 @@ public class GcpConfig {
         ObjectMapper mapper = new ObjectMapper();
         String finalJson = mapper.writeValueAsString(jsonMap);
         
-        // json을 스프링 내부에서 생성
         return GoogleCredentials.fromStream(
                 new ByteArrayInputStream(finalJson.getBytes(StandardCharsets.UTF_8))
         );
