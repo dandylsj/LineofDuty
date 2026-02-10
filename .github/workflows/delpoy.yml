@@ -63,11 +63,14 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           
           # script에서 사용할 변수들을 envs에 나열합니다.
-          envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,APP_NAME
+          envs: ECR_REGISTRY,ECR_REPOSITORY,IMAGE_TAG,APP_NAME,AWS_REGION
           
           script: |
             echo "Deploying $APP_NAME with tag $IMAGE_TAG"
             
+            # ECR 로그인
+            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
+
             # .env 파일 생성 (운영 환경 변수 주입)
             echo "${{ secrets.ENV }}" > .env
 
