@@ -7,6 +7,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.ByteArrayInputStream;
@@ -16,11 +17,15 @@ import java.util.Base64;
 @Service
 public class FireBaseInitialization {
 
-    @Value("${GOOGLE_CREDENTIALS}")
+    @Value("${GOOGLE_CREDENTIALS:}")
     private String googleCredentials;
 
     @PostConstruct
     public void initialize() {
+        if (!StringUtils.hasText(googleCredentials)) {
+            return;
+        }
+
         try {
             if (FirebaseApp.getApps().isEmpty()) {
                 byte[] decodedBytes = Base64.getDecoder().decode(googleCredentials);
