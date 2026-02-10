@@ -75,4 +75,5 @@ public class GcpConfig {
                 new ByteArrayInputStream(finalJson.getBytes(StandardCharsets.UTF_8))
         );
     }
+
 }
