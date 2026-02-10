@@ -1,21 +1,20 @@
 package com.example.lineofduty.common.config;
 
+// import com.fasterxml.jackson.databind.ObjectMapper;
+// import com.google.auth.oauth2.GoogleCredentials;
+// import org.springframework.beans.factory.annotation.Value;
+// import org.springframework.context.annotation.Bean;
+// import org.springframework.context.annotation.Configuration;
+//
+// import java.io.ByteArrayInputStream;
+// import java.io.IOException;
+// import java.nio.charset.StandardCharsets;
+// import java.util.HashMap;
+// import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.auth.oauth2.GoogleCredentials;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-
-@Configuration
+// @Configuration
 public class GcpConfig {
-
+/*
     @Value("${gcp.project-id}")
     private String projectId;
 
@@ -59,4 +58,5 @@ public class GcpConfig {
                 new ByteArrayInputStream(finalJson.getBytes(StandardCharsets.UTF_8))
         );
     }
+*/
 }
