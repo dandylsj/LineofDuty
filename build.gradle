@@ -65,8 +65,8 @@ dependencies {
     //mail
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 
-    //firebase
-    implementation 'com.google.firebase:firebase-admin:9.4.3'
+    // AWS S3
+    implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3:3.1.1'
 
     //비속어필터링
     implementation 'io.github.vaneproject:badwordfiltering:1.0.0'

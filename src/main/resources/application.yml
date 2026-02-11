@@ -59,6 +59,16 @@ spring:
     caffeine:
       spec: maximumSize=500,expireAfterWrite=10m
 
+  cloud:
+    aws:
+      s3:
+        bucket: ${AWS_S3_BUCKET}
+      region:
+        static: ${AWS_REGION}
+      credentials:
+        access-key: ${AWS_ACCESS_KEY}
+        secret-key: ${AWS_SECRET_KEY}
+
 openai:
   api:
     key: ${OPENAI_API_KEY}
@@ -87,10 +97,5 @@ kakao:
   client-id: ${KAKAO_CLIENT_ID}
   redirect-uri: ${KAKAO_REDIRECT_URI}
 
-gcp:
-  project-id: ${GCP_PROJECT_ID}
-  client-email: ${GCP_CLIENT_EMAIL}
-  private-key: ${GCP_PRIVATE_KEY}
-  private-key-id: ${GCP_PRIVATE_KEY_ID}
-  client-id: ${GCP_CLIENT_ID}
+
 
