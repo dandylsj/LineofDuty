@@ -5,6 +5,8 @@ import com.example.lineofduty.common.exception.ErrorMessage;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
 import com.google.firebase.cloud.StorageClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,30 +23,45 @@ import java.util.UUID;
 @Service
 public class FileUploadService {
 
+    private static final Logger log = LoggerFactory.getLogger(FileUploadService.class);
     private final String firebaseBucket = "lineofdutyfileupload.firebasestorage.app";
     private final List<String> allowedExtensions = Arrays.asList("jpg", "jpeg", "png", "bmp");
 
     @Transactional
     public FileUploadResponse fileUpload(MultipartFile file) throws IOException {
+        log.info("Starting file upload: {}", file.getOriginalFilename());
 
         validateFile(file);
 
         LocalDateTime now = LocalDateTime.now();
         String fileName = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd/HH/mm/ss")) + "_" + UUID.randomUUID().toString();
 
-        Bucket bucket = StorageClient.getInstance().bucket(firebaseBucket);
-        InputStream content = new ByteArrayInputStream(file.getBytes());
+        try {
+            log.info("Getting bucket: {}", firebaseBucket);
+            Bucket bucket = StorageClient.getInstance().bucket(firebaseBucket);
+            
+            if (bucket == null) {
+                log.error("Bucket not found: {}", firebaseBucket);
+                throw new CustomException(ErrorMessage.INVALID_REQUEST);
+            }
 
-        Blob blob = bucket.create(fileName, content, file.getContentType());
+            InputStream content = new ByteArrayInputStream(file.getBytes());
 
-        String publicUrl = String.format(
-                "https://firebasestorage.googleapis.com/v0/b/%s/o/%s?alt=media",
-                firebaseBucket,
-                fileName.replace("/", "%2F")
-        );
+            log.info("Creating blob with name: {}", fileName);
+            Blob blob = bucket.create(fileName, content, file.getContentType());
+            log.info("Blob created successfully: {}", blob.getName());
 
-        return new FileUploadResponse(fileName, publicUrl);
+            String publicUrl = String.format(
+                    "https://firebasestorage.googleapis.com/v0/b/%s/o/%s?alt=media",
+                    firebaseBucket,
+                    fileName.replace("/", "%2F")
+            );
 
+            return new FileUploadResponse(fileName, publicUrl);
+        } catch (Exception e) {
+            log.error("File upload failed", e);
+            throw e;
+        }
     }
 
     private void validateFile(MultipartFile file) {
