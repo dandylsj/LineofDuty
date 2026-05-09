@@ -21,24 +21,31 @@ public class KakaoController {
 
     private final KakaoService kakaoService;
 
-    @Value("${frontend.url}")
+    @Value("${frontend.url:}")
     private String frontendUrl;
 
     // 카카오 로그인 콜백
+    // frontendUrl이 설정되어 있으면 프론트엔드로 리다이렉트, 없으면 JSON으로 토큰 반환
     @GetMapping("/callback")
-    public void kakaoLogin(@RequestParam("code") String code, HttpServletResponse response) throws IOException {
+    public ResponseEntity<?> kakaoLogin(@RequestParam("code") String code, HttpServletResponse response) throws IOException {
 
         TokenResponse token = kakaoService.kakaoLogin(code);
 
-        String base = frontendUrl.endsWith("/") ? frontendUrl.substring(0, frontendUrl.length() - 1) : frontendUrl;
+        if (frontendUrl != null && !frontendUrl.isBlank()) {
+            String base = frontendUrl.endsWith("/") ? frontendUrl.substring(0, frontendUrl.length() - 1) : frontendUrl;
 
-        String accessToken = java.net.URLEncoder.encode(token.getAccessToken(), java.nio.charset.StandardCharsets.UTF_8);
-        String refreshToken = java.net.URLEncoder.encode(token.getRefreshToken(), java.nio.charset.StandardCharsets.UTF_8);
+            String accessToken = java.net.URLEncoder.encode(token.getAccessToken(), java.nio.charset.StandardCharsets.UTF_8);
+            String refreshToken = java.net.URLEncoder.encode(token.getRefreshToken(), java.nio.charset.StandardCharsets.UTF_8);
 
-        String redirectUrl = base + "/oauth/kakao/callback"
-                + "#accessToken=" + accessToken
-                + "&refreshToken=" + refreshToken;
+            String redirectUrl = base + "/oauth/kakao/callback"
+                    + "#accessToken=" + accessToken
+                    + "&refreshToken=" + refreshToken;
 
-        response.sendRedirect(redirectUrl);
+            response.sendRedirect(redirectUrl);
+            return null;
+        }
+
+        // frontendUrl 미설정 시 JSON으로 토큰 반환
+        return ResponseEntity.ok(GlobalResponse.success(SuccessMessage.LOGIN_SUCCESS, token));
     }
 }
