@@ -1,362 +1,834 @@
-2026-02-19 14:45:53.447 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-2026-02-19 14:45:53.494 [main] INFO  c.e.lineofduty.LineofdutyApplication - Starting LineofdutyApplication using Java 25 with PID 32844 (C:\Users\Fantasystar94\Desktop\sparta\Lineofduty\Lineofduty\build\classes\java\main started by Fantasystar94 in C:\Users\Fantasystar94\Desktop\sparta\Lineofduty\Lineofduty)
-2026-02-19 14:45:53.495 [main] INFO  c.e.lineofduty.LineofdutyApplication - No active profile set, falling back to 1 default profile: "default"
-2026-02-19 14:45:57.800 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2026-02-19 14:45:57.805 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-02-19 14:45:58.410 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 595 ms. Found 15 JPA repository interfaces.
-2026-02-19 14:45:58.430 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2026-02-19 14:45:58.432 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2026-02-19 14:45:58.491 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.auth.EmailVerificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.494 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatMessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.495 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatRoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.495 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.DefermentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.495 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentApplicationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.495 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentScheduleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.495 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.log.LogRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.495 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.notice.repository.NoticeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.495 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.orderItem.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.496 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.order.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.496 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.payment.repository.PaymentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.496 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.product.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.498 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.qna.repository.QnaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.498 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.token.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.499 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-02-19 14:45:58.499 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 49 ms. Found 0 Redis repository interfaces.
-2026-02-19 14:45:59.823 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-02-19 14:45:59.842 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-02-19 14:45:59.845 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-02-19 14:45:59.845 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
-2026-02-19 14:45:59.990 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-02-19 14:45:59.990 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6445 ms
-2026-02-19 14:46:02.088 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-02-19 14:46:02.195 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-02-19 14:46:02.263 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2026-02-19 14:46:02.759 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-02-19 14:46:02.815 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-02-19 14:46:03.491 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@a589070
-2026-02-19 14:46:03.494 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-02-19 14:46:03.608 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-02-19 14:46:05.317 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-02-19 14:46:05.972 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-02-19 14:46:06.731 [main] INFO  org.redisson.Version - Redisson 3.27.2
-2026-02-19 14:46:07.176 [redisson-netty-1-5] INFO  o.r.connection.ConnectionsHolder - 1 connections initialized for localhost/127.0.0.1:6379
-2026-02-19 14:46:07.222 [redisson-netty-1-24] INFO  o.r.connection.ConnectionsHolder - 10 connections initialized for localhost/127.0.0.1:6379
-2026-02-19 14:46:07.315 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-02-19 14:46:09.278 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-02-19 14:46:09.347 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
-2026-02-19 14:46:09.921 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
-2026-02-19 14:46:11.140 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-02-19 14:46:11.152 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-02-19 14:46:11.170 [main] INFO  c.e.lineofduty.LineofdutyApplication - Started LineofdutyApplication in 18.293 seconds (process running for 19.242)
-2026-02-19 14:46:11.618 [RMI TCP Connection(4)-172.17.64.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-02-19 14:46:11.619 [RMI TCP Connection(4)-172.17.64.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-02-19 14:46:11.622 [RMI TCP Connection(4)-172.17.64.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2026-02-19 14:46:13.528 [http-nio-8080-exec-3] INFO  c.e.l.d.w.s.TodayWeatherService - Short Term Weather API Request: http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?ServiceKey=e615e4953d1f3619a528e9a7566edca3952a4dc05b9658416e9159c04a3ea0cd&pageNo=1&numOfRows=100&dataType=JSON&base_date=20260219&base_time=1400&nx=36&ny=127
-2026-02-19 14:46:13.528 [http-nio-8080-exec-9] INFO  c.e.l.d.w.s.TodayWeatherService - Short Term Weather API Request: http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?ServiceKey=e615e4953d1f3619a528e9a7566edca3952a4dc05b9658416e9159c04a3ea0cd&pageNo=1&numOfRows=100&dataType=JSON&base_date=20260219&base_time=1400&nx=36&ny=127
-2026-02-19 14:46:13.682 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 205ms
-2026-02-19 14:46:13.761 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 52ms
-2026-02-19 14:46:13.823 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 349ms
-2026-02-19 14:46:13.844 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 16ms
-2026-02-19 14:46:15.154 [http-nio-8080-exec-9] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 1680ms
-2026-02-19 14:46:15.219 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 56ms
-2026-02-19 14:46:18.245 [http-nio-8080-exec-2] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:46:18.245 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:46:18.245 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:46:18.249 [http-nio-8080-exec-2] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 14:46:18.250 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:46:18.293 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/1 | Time: 40ms
-2026-02-19 14:46:18.293 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 46ms
-2026-02-19 14:46:18.295 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 48ms
-2026-02-19 14:46:18.295 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:46:18.301 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 5ms
-2026-02-19 14:46:18.339 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:46:18.343 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:46:18.383 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 43ms
-2026-02-19 14:46:18.393 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 49ms
-2026-02-19 14:51:45.109 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.113 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.120 [http-nio-8080-exec-9] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.127 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.127 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.135 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.141 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 9ms
-2026-02-19 14:51:45.141 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 12ms
-2026-02-19 14:51:45.165 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 53ms
-2026-02-19 14:51:45.165 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 50ms
-2026-02-19 14:51:45.175 [http-nio-8080-exec-9] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 52ms
-2026-02-19 14:51:45.186 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 47ms
-2026-02-19 14:51:45.189 [http-nio-8080-exec-7] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.232 [http-nio-8080-exec-7] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/1 | Time: 42ms
-2026-02-19 14:51:45.727 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.727 [http-nio-8080-exec-7] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.733 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.734 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.734 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.733 [http-nio-8080-exec-9] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.738 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 14:51:45.738 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 14:51:45.774 [http-nio-8080-exec-7] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 45ms
-2026-02-19 14:51:45.780 [http-nio-8080-exec-9] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 45ms
-2026-02-19 14:51:45.781 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 51ms
-2026-02-19 14:51:45.786 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:45.790 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 53ms
-2026-02-19 14:51:45.829 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/1 | Time: 41ms
-2026-02-19 14:51:53.148 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:53.151 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:53.151 [http-nio-8080-exec-7] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:53.151 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:53.151 [http-nio-8080-exec-9] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:53.157 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 4ms
-2026-02-19 14:51:53.160 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:53.165 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 4ms
-2026-02-19 14:51:53.201 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 46ms
-2026-02-19 14:51:53.201 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 50ms
-2026-02-19 14:51:53.203 [http-nio-8080-exec-7] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 49ms
-2026-02-19 14:51:53.203 [http-nio-8080-exec-9] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 50ms
-2026-02-19 14:51:53.203 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:51:53.248 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 43ms
-2026-02-19 14:52:28.770 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:28.770 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:28.770 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:28.770 [http-nio-8080-exec-12] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:28.772 [http-nio-8080-exec-7] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:28.773 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:28.776 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 14:52:28.778 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 14:52:28.818 [http-nio-8080-exec-12] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 45ms
-2026-02-19 14:52:28.818 [http-nio-8080-exec-7] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 43ms
-2026-02-19 14:52:28.822 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:28.823 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 48ms
-2026-02-19 14:52:28.823 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 50ms
-2026-02-19 14:52:28.865 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 42ms
-2026-02-19 14:52:36.789 [http-nio-8080-exec-7] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:36.789 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:36.794 [http-nio-8080-exec-7] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 4ms
-2026-02-19 14:52:36.795 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:36.795 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:36.795 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:36.795 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:36.799 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 14:52:36.846 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 14:52:36.846 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 56ms
-2026-02-19 14:52:36.846 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 50ms
-2026-02-19 14:52:36.851 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 55ms
-2026-02-19 14:52:36.851 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 55ms
-2026-02-19 14:52:36.888 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 41ms
-2026-02-19 15:02:50.515 [http-nio-8080-exec-2] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:50.515 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:50.515 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:50.520 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 4ms
-2026-02-19 15:02:50.523 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:50.560 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 36ms
-2026-02-19 15:02:50.560 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:50.560 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 44ms
-2026-02-19 15:02:50.568 [http-nio-8080-exec-2] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 51ms
-2026-02-19 15:02:50.573 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 11ms
-2026-02-19 15:02:50.614 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:50.617 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:50.659 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 44ms
-2026-02-19 15:02:50.674 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 54ms
-2026-02-19 15:02:53.453 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:53.453 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:53.453 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:53.457 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 15:02:53.460 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:53.498 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 43ms
-2026-02-19 15:02:53.500 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 38ms
-2026-02-19 15:02:53.501 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:53.502 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 47ms
-2026-02-19 15:02:53.507 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 15:02:53.548 [http-nio-8080-exec-2] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:53.548 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:02:53.595 [http-nio-8080-exec-2] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 46ms
-2026-02-19 15:02:53.602 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 52ms
-2026-02-19 15:05:01.634 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:05:01.639 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:05:01.639 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 15:05:01.646 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:05:01.677 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:05:01.692 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 52ms
-2026-02-19 15:05:01.692 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:05:01.694 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 47ms
-2026-02-19 15:05:01.705 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 9ms
-2026-02-19 15:05:01.718 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 40ms
-2026-02-19 15:05:01.742 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:05:01.751 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:05:01.788 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 43ms
-2026-02-19 15:05:01.801 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 50ms
-2026-02-19 15:14:16.870 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:14:16.870 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:14:16.870 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:14:16.876 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:14:16.878 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 5ms
-2026-02-19 15:14:16.916 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 38ms
-2026-02-19 15:14:16.916 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 43ms
-2026-02-19 15:14:16.919 [http-nio-8080-exec-2] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:14:16.921 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 49ms
-2026-02-19 15:14:16.923 [http-nio-8080-exec-2] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 15:14:16.966 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:14:16.966 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:14:17.008 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 41ms
-2026-02-19 15:14:17.016 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 49ms
-2026-02-19 15:16:44.086 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:44.088 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:44.093 [http-nio-8080-exec-2] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:44.094 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:44.104 [http-nio-8080-exec-4] INFO  c.e.l.d.w.s.TodayWeatherService - Short Term Weather API Request: http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?ServiceKey=e615e4953d1f3619a528e9a7566edca3952a4dc05b9658416e9159c04a3ea0cd&pageNo=1&numOfRows=100&dataType=JSON&base_date=20260219&base_time=1400&nx=36&ny=127
-2026-02-19 15:16:44.110 [http-nio-8080-exec-2] INFO  c.e.l.d.w.s.TodayWeatherService - Short Term Weather API Request: http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?ServiceKey=e615e4953d1f3619a528e9a7566edca3952a4dc05b9658416e9159c04a3ea0cd&pageNo=1&numOfRows=100&dataType=JSON&base_date=20260219&base_time=1400&nx=36&ny=127
-2026-02-19 15:16:44.134 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 40ms
-2026-02-19 15:16:44.146 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 57ms
-2026-02-19 15:16:44.194 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:44.253 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 57ms
-2026-02-19 15:16:44.391 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 302ms
-2026-02-19 15:16:44.430 [http-nio-8080-exec-2] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 336ms
-2026-02-19 15:16:44.437 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:44.442 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 15:16:44.476 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:44.522 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 46ms
-2026-02-19 15:16:46.747 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:46.747 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:46.747 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:46.747 [http-nio-8080-exec-2] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:46.748 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:46.750 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 15:16:46.750 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 15:16:46.755 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:46.797 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:46.797 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 48ms
-2026-02-19 15:16:46.803 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 55ms
-2026-02-19 15:16:46.806 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 50ms
-2026-02-19 15:16:46.808 [http-nio-8080-exec-2] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 59ms
-2026-02-19 15:16:46.842 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 43ms
-2026-02-19 15:16:54.876 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:54.876 [http-nio-8080-exec-2] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:54.876 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:54.876 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:54.879 [http-nio-8080-exec-2] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 15:16:54.883 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:54.883 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:54.885 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 1ms
-2026-02-19 15:16:54.920 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 42ms
-2026-02-19 15:16:54.924 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 48ms
-2026-02-19 15:16:54.924 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 15
-2026-02-19 15:16:54.924 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 47ms
-2026-02-19 15:16:54.926 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 42ms
-2026-02-19 15:16:54.966 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/15 | Time: 42ms
-2026-02-19 17:23:06.339 [http-nio-8080-exec-10] INFO  c.e.l.d.w.s.TodayWeatherService - Short Term Weather API Request: http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?ServiceKey=e615e4953d1f3619a528e9a7566edca3952a4dc05b9658416e9159c04a3ea0cd&pageNo=1&numOfRows=100&dataType=JSON&base_date=20260219&base_time=1700&nx=36&ny=127
-2026-02-19 17:23:06.339 [http-nio-8080-exec-14] INFO  c.e.l.d.w.s.TodayWeatherService - Short Term Weather API Request: http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?ServiceKey=e615e4953d1f3619a528e9a7566edca3952a4dc05b9658416e9159c04a3ea0cd&pageNo=1&numOfRows=100&dataType=JSON&base_date=20260219&base_time=1700&nx=36&ny=127
-2026-02-19 17:23:06.396 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 86ms
-2026-02-19 17:23:06.461 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 55ms
-2026-02-19 17:23:06.518 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 51ms
-2026-02-19 17:23:06.578 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 55ms
-2026-02-19 17:23:06.612 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 303ms
-2026-02-19 17:23:06.622 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 5ms
-2026-02-19 17:23:06.631 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 17:23:06.635 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 52ms
-2026-02-19 17:23:06.642 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 6ms
-2026-02-19 17:23:06.652 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 17:23:06.663 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 17:23:06.692 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 50ms
-2026-02-19 17:23:06.801 [http-nio-8080-exec-14] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 493ms
-2026-02-19 17:23:06.852 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 47ms
-2026-02-19 17:23:06.952 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 96ms
-2026-02-19 17:23:07.012 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 52ms
-2026-02-19 17:23:07.064 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 47ms
-2026-02-19 17:23:07.113 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 44ms
-2026-02-19 17:25:44.208 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 11ms
-2026-02-19 17:25:44.212 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 9ms
-2026-02-19 17:25:44.255 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 53ms
-2026-02-19 17:25:44.256 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 57ms
-2026-02-19 17:25:44.261 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 57ms
-2026-02-19 17:25:44.273 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 54ms
-2026-02-19 17:26:11.358 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 5ms
-2026-02-19 17:26:11.367 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 4ms
-2026-02-19 17:26:11.382 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 5ms
-2026-02-19 17:26:11.396 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 17:26:11.410 [http-nio-8080-exec-14] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 57ms
-2026-02-19 17:26:11.418 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 65ms
-2026-02-19 17:26:11.429 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 4ms
-2026-02-19 17:26:11.438 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 17:26:11.476 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 51ms
-2026-02-19 17:26:11.485 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 59ms
-2026-02-19 17:26:11.538 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 51ms
-2026-02-19 17:26:11.545 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 50ms
-2026-02-19 17:26:11.595 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 45ms
-2026-02-19 17:26:11.605 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 54ms
-2026-02-19 17:26:11.650 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 46ms
-2026-02-19 17:26:11.673 [http-nio-8080-exec-14] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 48ms
-2026-02-19 17:26:11.705 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 47ms
-2026-02-19 17:26:11.739 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 59ms
-2026-02-19 17:26:17.588 [http-nio-8080-exec-14] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:26:17.588 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:26:17.588 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:26:17.588 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:26:17.591 [http-nio-8080-exec-14] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 17:26:17.632 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/16 | Time: 43ms
-2026-02-19 17:26:17.632 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 43ms
-2026-02-19 17:26:17.632 [http-nio-8080-exec-14] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:26:17.638 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 48ms
-2026-02-19 17:26:17.653 [http-nio-8080-exec-14] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 4ms
-2026-02-19 17:26:17.691 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:26:17.694 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:26:17.748 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 56ms
-2026-02-19 17:26:17.748 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 49ms
-2026-02-19 17:27:28.413 [http-nio-8080-exec-14] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.413 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.413 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.416 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 17:27:28.430 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.458 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 44ms
-2026-02-19 17:27:28.460 [http-nio-8080-exec-14] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 46ms
-2026-02-19 17:27:28.461 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.467 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 17:27:28.471 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/16 | Time: 40ms
-2026-02-19 17:27:28.504 [http-nio-8080-exec-14] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.504 [http-nio-8080-exec-15] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.515 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.515 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.517 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 17:27:28.551 [http-nio-8080-exec-14] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 46ms
-2026-02-19 17:27:28.552 [http-nio-8080-exec-15] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 47ms
-2026-02-19 17:27:28.553 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/16 | Time: 38ms
-2026-02-19 17:27:28.561 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.564 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 2ms
-2026-02-19 17:27:28.594 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.594 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.594 [http-nio-8080-exec-3] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.607 [http-nio-8080-exec-6] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.613 [http-nio-8080-exec-6] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 4ms
-2026-02-19 17:27:28.635 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/16 | Time: 41ms
-2026-02-19 17:27:28.637 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 42ms
-2026-02-19 17:27:28.646 [http-nio-8080-exec-3] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 51ms
-2026-02-19 17:27:28.660 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.664 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 17:27:28.680 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.692 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.797 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 116ms
-2026-02-19 17:27:28.818 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 125ms
-2026-02-19 17:27:28.843 [http-nio-8080-exec-15] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.864 [http-nio-8080-exec-4] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.886 [http-nio-8080-exec-15] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 42ms
-2026-02-19 17:27:28.915 [http-nio-8080-exec-4] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 51ms
-2026-02-19 17:27:28.927 [http-nio-8080-exec-15] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.959 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:28.969 [http-nio-8080-exec-15] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 41ms
-2026-02-19 17:27:29.011 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 51ms
-2026-02-19 17:27:31.252 [http-nio-8080-exec-14] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:31.252 [http-nio-8080-exec-13] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:31.252 [http-nio-8080-exec-10] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:31.252 [http-nio-8080-exec-8] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:31.252 [http-nio-8080-exec-11] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:31.253 [http-nio-8080-exec-1] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:31.255 [http-nio-8080-exec-8] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 17:27:31.255 [http-nio-8080-exec-10] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/weather/today | Time: 3ms
-2026-02-19 17:27:31.294 [http-nio-8080-exec-11] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 41ms
-2026-02-19 17:27:31.294 [http-nio-8080-exec-14] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/enlistment/thisWeek | Time: 42ms
-2026-02-19 17:27:31.297 [http-nio-8080-exec-5] INFO  c.e.l.common.filter.JwtFilter - 인증 성공 : userId : 16
-2026-02-19 17:27:31.302 [http-nio-8080-exec-1] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 48ms
-2026-02-19 17:27:31.303 [http-nio-8080-exec-13] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/notices | Time: 51ms
-2026-02-19 17:27:31.340 [http-nio-8080-exec-5] INFO  c.e.lineofduty.domain.log.LogAspect - Request: GET /api/users/16 | Time: 42ms
-2026-02-19 18:42:51.888 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-02-19 18:42:51.896 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-02-19 18:42:51.965 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-05-09 16:36:55.426 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-05-09 16:36:55.478 [main] INFO  c.e.lineofduty.LineofdutyApplication - Starting LineofdutyApplication using Java 17.0.18 with PID 11096 (C:\Users\lsjya\IdeaProjects\LineofDuty\build\classes\java\main started by lsjya in C:\Users\lsjya\IdeaProjects\LineofDuty)
+2026-05-09 16:36:55.479 [main] INFO  c.e.lineofduty.LineofdutyApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-09 16:36:56.873 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:36:56.876 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-09 16:36:57.168 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 284 ms. Found 15 JPA repository interfaces.
+2026-05-09 16:36:57.180 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:36:57.181 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-09 16:36:57.207 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.auth.EmailVerificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.209 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatMessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.210 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatRoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.210 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.DefermentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.210 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentApplicationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.211 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentScheduleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.211 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.log.LogRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.211 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.notice.repository.NoticeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.211 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.orderItem.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.212 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.order.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.212 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.payment.repository.PaymentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.212 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.product.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.213 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.qna.repository.QnaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.214 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.token.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.214 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:36:57.214 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+2026-05-09 16:36:58.197 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-05-09 16:36:58.208 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-09 16:36:58.210 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-09 16:36:58.210 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-05-09 16:36:58.286 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-05-09 16:36:58.287 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2748 ms
+2026-05-09 16:36:58.487 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-05-09 16:36:58.493 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2026-05-09 16:36:58.506 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-09 16:44:01.593 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-05-09 16:44:01.649 [main] INFO  c.e.lineofduty.LineofdutyApplication - Starting LineofdutyApplication using Java 17.0.18 with PID 51732 (C:\Users\lsjya\IdeaProjects\LineofDuty\build\classes\java\main started by lsjya in C:\Users\lsjya\IdeaProjects\LineofDuty)
+2026-05-09 16:44:01.651 [main] INFO  c.e.lineofduty.LineofdutyApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-09 16:44:03.072 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:44:03.074 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-09 16:44:03.501 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 421 ms. Found 15 JPA repository interfaces.
+2026-05-09 16:44:03.522 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:44:03.523 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-09 16:44:03.790 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.auth.EmailVerificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.816 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatMessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.818 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatRoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.819 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.DefermentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.819 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentApplicationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.820 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentScheduleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.820 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.log.LogRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.821 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.notice.repository.NoticeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.936 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.orderItem.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.937 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.order.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.939 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.payment.repository.PaymentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.940 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.product.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.943 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.qna.repository.QnaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.944 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.token.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.944 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:44:03.945 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 266 ms. Found 0 Redis repository interfaces.
+2026-05-09 16:44:05.274 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-05-09 16:44:05.285 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-09 16:44:05.288 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-09 16:44:05.288 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-05-09 16:44:05.384 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-05-09 16:44:05.385 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3659 ms
+2026-05-09 16:44:06.491 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-09 16:44:06.562 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-09 16:44:06.598 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-09 16:44:06.919 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-09 16:44:06.948 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-09 16:44:08.069 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+2026-05-09 16:44:08.071 [main] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:292)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:682)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1705)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1454)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4426)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.lineofduty.LineofdutyApplication.main(LineofdutyApplication.java:18)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:439)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	... 121 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+	... 134 common frames omitted
+Caused by: java.net.UnknownHostException: 알려진 호스트가 없습니다 (database-1.cb4k0uu42xw0.ap-northeast-2.rds.amazonaws.com)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:934)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:852)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
+	... 137 common frames omitted
+2026-05-09 16:44:08.115 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-09 16:44:09.424 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-09 16:44:09.445 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-09 16:44:10.454 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+2026-05-09 16:44:10.542 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-05-09 16:44:10.549 [main] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [idle-connection-reaper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.18/java.lang.Thread.sleep(Native Method)
+ app//software.amazon.awssdk.http.apache.internal.conn.IdleConnectionReaper$ReaperTask.run(IdleConnectionReaper.java:151)
+ java.base@17.0.18/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.18/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.18/java.lang.Thread.run(Thread.java:840)
+2026-05-09 16:44:10.551 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2026-05-09 16:44:10.574 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-09 16:46:42.728 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-05-09 16:46:42.785 [main] INFO  c.e.lineofduty.LineofdutyApplication - Starting LineofdutyApplication using Java 17.0.18 with PID 20380 (C:\Users\lsjya\IdeaProjects\LineofDuty\build\classes\java\main started by lsjya in C:\Users\lsjya\IdeaProjects\LineofDuty)
+2026-05-09 16:46:42.787 [main] INFO  c.e.lineofduty.LineofdutyApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-09 16:46:43.988 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:46:43.989 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-09 16:46:44.242 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 248 ms. Found 15 JPA repository interfaces.
+2026-05-09 16:46:44.254 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:46:44.255 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-09 16:46:44.283 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.auth.EmailVerificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.285 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatMessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.288 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatRoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.288 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.DefermentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.288 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentApplicationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.288 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentScheduleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.290 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.log.LogRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.290 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.notice.repository.NoticeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.290 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.orderItem.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.290 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.order.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.290 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.payment.repository.PaymentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.290 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.product.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.291 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.qna.repository.QnaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.291 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.token.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.291 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:46:44.291 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
+2026-05-09 16:46:45.146 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-05-09 16:46:45.155 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-09 16:46:45.157 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-09 16:46:45.157 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-05-09 16:46:45.215 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-05-09 16:46:45.216 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2366 ms
+2026-05-09 16:46:46.134 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-09 16:46:46.192 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-09 16:46:46.217 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-09 16:46:46.469 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-09 16:46:46.492 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-09 16:46:47.611 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+2026-05-09 16:46:47.618 [main] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:292)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:682)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1705)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1454)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4426)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.lineofduty.LineofdutyApplication.main(LineofdutyApplication.java:18)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:439)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	... 121 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+	... 134 common frames omitted
+Caused by: java.net.UnknownHostException: 알려진 호스트가 없습니다 (database-1.cb4k0uu42xw0.ap-northeast-2.rds.amazonaws.com)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:934)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:852)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
+	... 137 common frames omitted
+2026-05-09 16:46:47.686 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-09 16:46:48.944 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-09 16:46:48.969 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-09 16:46:49.971 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+2026-05-09 16:46:50.000 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-05-09 16:46:50.003 [main] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [idle-connection-reaper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.18/java.lang.Thread.sleep(Native Method)
+ app//software.amazon.awssdk.http.apache.internal.conn.IdleConnectionReaper$ReaperTask.run(IdleConnectionReaper.java:151)
+ java.base@17.0.18/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.18/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.18/java.lang.Thread.run(Thread.java:840)
+2026-05-09 16:46:50.005 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2026-05-09 16:46:50.016 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-09 16:48:50.550 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-05-09 16:48:50.602 [main] INFO  c.e.lineofduty.LineofdutyApplication - Starting LineofdutyApplication using Java 17.0.18 with PID 32596 (C:\Users\lsjya\IdeaProjects\LineofDuty\build\classes\java\main started by lsjya in C:\Users\lsjya\IdeaProjects\LineofDuty)
+2026-05-09 16:48:50.603 [main] INFO  c.e.lineofduty.LineofdutyApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-09 16:48:51.938 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:48:51.940 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-09 16:48:52.208 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 263 ms. Found 15 JPA repository interfaces.
+2026-05-09 16:48:52.219 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:48:52.220 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-09 16:48:52.245 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.auth.EmailVerificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.247 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatMessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.248 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatRoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.248 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.DefermentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.249 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentApplicationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.249 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentScheduleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.249 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.log.LogRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.250 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.notice.repository.NoticeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.250 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.orderItem.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.250 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.order.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.250 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.payment.repository.PaymentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.250 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.product.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.251 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.qna.repository.QnaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.251 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.token.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.252 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:48:52.252 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+2026-05-09 16:48:53.149 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-05-09 16:48:53.160 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-09 16:48:53.161 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-09 16:48:53.162 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-05-09 16:48:53.243 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-05-09 16:48:53.272 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2612 ms
+2026-05-09 16:48:54.346 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-09 16:48:54.395 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-09 16:48:54.427 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-09 16:48:54.721 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-09 16:48:54.750 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-09 16:48:55.865 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+2026-05-09 16:48:55.868 [main] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:292)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:682)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1705)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1454)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4426)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.lineofduty.LineofdutyApplication.main(LineofdutyApplication.java:18)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:439)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	... 121 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+	... 134 common frames omitted
+Caused by: java.net.UnknownHostException: 알려진 호스트가 없습니다 (database-1.cb4k0uu42xw0.ap-northeast-2.rds.amazonaws.com)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:934)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:852)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
+	... 137 common frames omitted
+2026-05-09 16:48:55.907 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-09 16:48:56.997 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-09 16:48:57.016 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-09 16:48:58.023 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+2026-05-09 16:48:58.060 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-05-09 16:48:58.063 [main] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [idle-connection-reaper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.18/java.lang.Thread.sleep(Native Method)
+ app//software.amazon.awssdk.http.apache.internal.conn.IdleConnectionReaper$ReaperTask.run(IdleConnectionReaper.java:151)
+ java.base@17.0.18/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.18/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.18/java.lang.Thread.run(Thread.java:840)
+2026-05-09 16:48:58.066 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2026-05-09 16:48:58.084 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-09 16:51:11.202 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-05-09 16:51:11.245 [main] INFO  c.e.lineofduty.LineofdutyApplication - Starting LineofdutyApplication using Java 17.0.18 with PID 72744 (C:\Users\lsjya\IdeaProjects\LineofDuty\build\classes\java\main started by lsjya in C:\Users\lsjya\IdeaProjects\LineofDuty)
+2026-05-09 16:51:11.247 [main] INFO  c.e.lineofduty.LineofdutyApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-09 16:51:12.541 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:51:12.545 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-09 16:51:12.805 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 256 ms. Found 15 JPA repository interfaces.
+2026-05-09 16:51:12.818 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:51:12.819 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-09 16:51:12.846 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.auth.EmailVerificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.848 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatMessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.851 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatRoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.851 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.DefermentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.852 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentApplicationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.852 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentScheduleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.852 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.log.LogRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.852 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.notice.repository.NoticeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.852 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.orderItem.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.853 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.order.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.853 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.payment.repository.PaymentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.853 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.product.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.854 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.qna.repository.QnaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.854 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.token.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.855 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:51:12.855 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 0 Redis repository interfaces.
+2026-05-09 16:51:13.691 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-05-09 16:51:13.700 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-09 16:51:13.701 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-09 16:51:13.701 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-05-09 16:51:13.770 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-05-09 16:51:13.775 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2464 ms
+2026-05-09 16:51:14.744 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-09 16:51:14.786 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-09 16:51:14.812 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-09 16:51:15.064 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-09 16:51:15.086 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-09 16:51:15.219 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d0d5147
+2026-05-09 16:51:15.221 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-05-09 16:51:15.281 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-09 16:51:16.373 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-09 16:51:18.088 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-09 16:51:18.651 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-09 16:51:20.122 [main] INFO  org.redisson.Version - Redisson 3.27.2
+2026-05-09 16:52:05.307 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisLockService' defined in file [C:\Users\lsjya\IdeaProjects\LineofDuty\build\classes\java\main\com\example\lineofduty\domain\enlistmentSchedule\service\RedisLockService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'stringRedisTemplate' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfigurationV2.class]: Unsatisfied dependency expressed through method 'stringRedisTemplate' parameter 0: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfigurationV2.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0: Error creating bean with name 'redissonClient' defined in class path resource [com/example/lineofduty/common/config/RedissonConfig.class]: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redissonClient' threw exception with message: java.util.concurrent.ExecutionException: org.redisson.client.RedisConnectionException: Unable to connect to Redis server: 172.31.38.253/172.31.38.253:6379
+2026-05-09 16:52:05.310 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-09 16:52:05.312 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-05-09 16:52:05.322 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-05-09 16:52:05.324 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-05-09 16:52:05.327 [main] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [idle-connection-reaper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.18/java.lang.Thread.sleep(Native Method)
+ app//software.amazon.awssdk.http.apache.internal.conn.IdleConnectionReaper$ReaperTask.run(IdleConnectionReaper.java:151)
+ java.base@17.0.18/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.18/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.18/java.lang.Thread.run(Thread.java:840)
+2026-05-09 16:52:05.346 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-09 16:54:44.443 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-05-09 16:54:44.481 [main] INFO  c.e.lineofduty.LineofdutyApplication - Starting LineofdutyApplication using Java 17.0.18 with PID 72656 (C:\Users\lsjya\IdeaProjects\LineofDuty\build\classes\java\main started by lsjya in C:\Users\lsjya\IdeaProjects\LineofDuty)
+2026-05-09 16:54:44.482 [main] INFO  c.e.lineofduty.LineofdutyApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-09 16:54:45.689 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:54:45.691 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-09 16:54:45.962 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 264 ms. Found 15 JPA repository interfaces.
+2026-05-09 16:54:45.972 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-09 16:54:45.973 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-09 16:54:45.997 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.auth.EmailVerificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:45.999 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatMessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.000 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.chatbot.repository.ChatRoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.000 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.DefermentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.001 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentApplicationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.001 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.enlistmentSchedule.repository.EnlistmentScheduleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.001 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.log.LogRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.001 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.notice.repository.NoticeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.001 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.orderItem.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.002 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.order.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.002 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.payment.repository.PaymentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.002 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.product.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.004 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.qna.repository.QnaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.005 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.token.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.005 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.lineofduty.domain.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-09 16:54:46.005 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 Redis repository interfaces.
+2026-05-09 16:54:46.879 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-05-09 16:54:46.887 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-09 16:54:46.887 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-09 16:54:46.888 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-05-09 16:54:46.949 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-05-09 16:54:46.951 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2422 ms
+2026-05-09 16:54:47.888 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-09 16:54:47.941 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-09 16:54:48.017 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-09 16:54:48.270 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-09 16:54:48.298 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-09 16:54:48.419 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69a14512
+2026-05-09 16:54:48.421 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-05-09 16:54:48.469 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-09 16:54:49.544 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-09 16:54:49.887 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-09 16:54:50.537 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-09 16:54:51.456 [main] INFO  org.redisson.Version - Redisson 3.27.2
+2026-05-09 16:54:51.791 [redisson-netty-1-6] INFO  o.r.connection.ConnectionsHolder - 1 connections initialized for localhost/127.0.0.1:6379
+2026-05-09 16:54:51.852 [redisson-netty-1-24] INFO  o.r.connection.ConnectionsHolder - 10 connections initialized for localhost/127.0.0.1:6379
+2026-05-09 16:54:52.879 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-09 16:54:52.923 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-05-09 16:54:53.465 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-05-09 16:54:55.007 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-05-09 16:54:55.028 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-05-09 16:54:55.063 [main] INFO  c.e.lineofduty.LineofdutyApplication - Started LineofdutyApplication in 11.14 seconds (process running for 11.706)
+2026-05-09 16:54:55.469 [RMI TCP Connection(1)-192.168.0.23] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-09 16:54:55.469 [RMI TCP Connection(1)-192.168.0.23] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-05-09 16:54:55.475 [RMI TCP Connection(1)-192.168.0.23] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2026-05-09 16:58:48.541 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-09 16:58:48.543 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-05-09 16:58:48.552 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
