@@ -22,7 +22,7 @@ public class QnaAdminController {
     private final QnaAdminService qnaAdminService;
 
 
-    // 질문 관리자 답변 등록
+    // 질문 관리자 답변 등록.
     @PostMapping("/{qnaId}")
     public ResponseEntity<GlobalResponse> qnaAdminAnswerApi(@PathVariable Long qnaId, @AuthenticationPrincipal UserDetail userDetails,
                                                             @RequestBody QnaAdminAnswerRequest request) {
