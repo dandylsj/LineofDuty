@@ -13,10 +13,11 @@ public class FileUploadService {
 
     private final MinioClient minioClient;
     private final String bucket;
-    private final String endpoint;
+    private final String publicEndpoint;
 
     public FileUploadService(
             @Value("${minio.endpoint}") String endpoint,
+            @Value("${minio.public-endpoint}") String publicEndpoint,
             @Value("${minio.access-key}") String accessKey,
             @Value("${minio.secret-key}") String secretKey,
             @Value("${minio.bucket}") String bucket) {
@@ -24,7 +25,7 @@ public class FileUploadService {
                 .endpoint(endpoint)
                 .credentials(accessKey, secretKey)
                 .build();
-        this.endpoint = endpoint;
+        this.publicEndpoint = publicEndpoint;
         this.bucket = bucket;
     }
 
@@ -48,7 +49,7 @@ public class FileUploadService {
                             .contentType(file.getContentType())
                             .build());
 
-            String fileUrl = endpoint + "/" + bucket + "/" + fileName;
+            String fileUrl = publicEndpoint + "/" + bucket + "/" + fileName;
             return new FileUploadResponse(fileName, fileUrl);
 
         } catch (Exception e) {
