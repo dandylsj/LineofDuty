@@ -39,7 +39,11 @@ public class FileUploadService {
                         MakeBucketArgs.builder().bucket(bucket).build());
             }
 
-            String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+            String originalFilename = file.getOriginalFilename();
+            String extension = originalFilename != null && originalFilename.contains(".")
+                    ? originalFilename.substring(originalFilename.lastIndexOf("."))
+                    : "";
+            String fileName = UUID.randomUUID() + extension;
 
             minioClient.putObject(
                     PutObjectArgs.builder()
