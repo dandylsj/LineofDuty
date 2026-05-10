@@ -1,15 +1,58 @@
 package com.example.lineofduty.domain.fileUpload;
 
+import io.minio.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.UUID;
 
 @Service
 public class FileUploadService {
 
-    // S3 기능 비활성화 (추후 스토리지 연동 시 복구)
+    private final MinioClient minioClient;
+    private final String bucket;
+    private final String endpoint;
+
+    public FileUploadService(
+            @Value("${minio.endpoint}") String endpoint,
+            @Value("${minio.access-key}") String accessKey,
+            @Value("${minio.secret-key}") String secretKey,
+            @Value("${minio.bucket}") String bucket) {
+        this.minioClient = MinioClient.builder()
+                .endpoint(endpoint)
+                .credentials(accessKey, secretKey)
+                .build();
+        this.endpoint = endpoint;
+        this.bucket = bucket;
+    }
+
     public FileUploadResponse fileUpload(MultipartFile file) throws IOException {
-        throw new UnsupportedOperationException("파일 업로드 기능은 현재 비활성화 상태입니다.");
+        try {
+            // 버킷이 없으면 자동 생성
+            boolean exists = minioClient.bucketExists(
+                    BucketExistsArgs.builder().bucket(bucket).build());
+            if (!exists) {
+                minioClient.makeBucket(
+                        MakeBucketArgs.builder().bucket(bucket).build());
+            }
+
+            String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+
+            minioClient.putObject(
+                    PutObjectArgs.builder()
+                            .bucket(bucket)
+                            .object(fileName)
+                            .stream(file.getInputStream(), file.getSize(), -1)
+                            .contentType(file.getContentType())
+                            .build());
+
+            String fileUrl = endpoint + "/" + bucket + "/" + fileName;
+            return new FileUploadResponse(fileName, fileUrl);
+
+        } catch (Exception e) {
+            throw new IOException("파일 업로드에 실패했습니다: " + e.getMessage(), e);
+        }
     }
 }

@@ -92,3 +92,9 @@ weather:
 kakao:
   client-id: ${KAKAO_CLIENT_ID}
   redirect-uri: ${KAKAO_REDIRECT_URI}
+
+minio:
+  endpoint: ${MINIO_ENDPOINT:http://lineofduty-minio:9000}
+  access-key: ${MINIO_ACCESS_KEY:admin}
+  secret-key: ${MINIO_SECRET_KEY:password123}
+  bucket: ${MINIO_BUCKET:lineofduty}

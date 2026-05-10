@@ -94,6 +94,12 @@ jobs:
           echo "TOSS_SECRET_KEY=${{ secrets.TOSS_SECRET_KEY }}" >> .env
           echo "WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}" >> .env
 
+          # 8. MinIO 설정
+          echo "MINIO_ENDPOINT=${{ secrets.MINIO_ENDPOINT }}" >> .env
+          echo "MINIO_ACCESS_KEY=${{ secrets.MINIO_ACCESS_KEY }}" >> .env
+          echo "MINIO_SECRET_KEY=${{ secrets.MINIO_SECRET_KEY }}" >> .env
+          echo "MINIO_BUCKET=${{ secrets.MINIO_BUCKET }}" >> .env
+
           # 9. 기타
           echo "TZ=Asia/Seoul" >> .env
 

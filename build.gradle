@@ -72,6 +72,9 @@ dependencies {
     //비속어필터링
     implementation 'io.github.vaneproject:badwordfiltering:1.0.0'
 
+    // MinIO
+    implementation 'io.minio:minio:8.5.7'
+
     //h2 DB
     testRuntimeOnly 'com.h2database:h2'
 
