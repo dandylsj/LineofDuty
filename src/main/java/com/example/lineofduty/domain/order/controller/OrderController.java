@@ -9,9 +9,11 @@ import com.example.lineofduty.domain.user.dto.UserDetail;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,11 +39,16 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(GlobalResponse.success(SuccessMessage.ORDER_GET_SUCCESS, response));
     }
 
-    // 주문 상태 수정
-    @PatchMapping("/{orderId}/orderItems/{orderItemId}")
-    public ResponseEntity<GlobalResponse> updateOrder(@PathVariable Long orderId, @PathVariable Long orderItemId,@Valid @RequestBody OrderUpdateRequest request) {
+    // 주문 수정 (이미지 포함)
+    @PatchMapping(value = "/{orderId}/orderItems/{orderItemId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<GlobalResponse> updateOrder(
+            @PathVariable Long orderId,
+            @PathVariable Long orderItemId,
+            @RequestParam Long productId,
+            @RequestParam Long quantity,
+            @RequestPart(value = "image", required = false) MultipartFile image) {
 
-        OrderUpdateResponse response = orderService.updateOrderService(orderId, orderItemId, request);
+        OrderUpdateResponse response = orderService.updateOrderService(orderId, orderItemId, productId, quantity, image);
         return ResponseEntity.status(HttpStatus.OK).body(GlobalResponse.success(SuccessMessage.ORDER_UPDATE_SUCCESS, response));
     }
 

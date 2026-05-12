@@ -2,6 +2,8 @@ package com.example.lineofduty.domain.order.service;
 
 import com.example.lineofduty.common.exception.CustomException;
 import com.example.lineofduty.common.exception.ErrorMessage;
+import com.example.lineofduty.domain.fileUpload.FileUploadResponse;
+import com.example.lineofduty.domain.fileUpload.FileUploadService;
 import com.example.lineofduty.domain.order.Order;
 import com.example.lineofduty.domain.order.dto.*;
 import com.example.lineofduty.domain.order.repository.OrderRepository;
@@ -14,6 +16,9 @@ import com.example.lineofduty.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,6 +33,7 @@ public class OrderService {
     private final OrderItemRepository orderItemRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final FileUploadService fileUploadService;
 
     private static final String CHARSET =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
@@ -105,9 +111,9 @@ public class OrderService {
         return OrderGetResponse.from(order);
     }
 
-    // 주문 수정
+    // 주문 수정 (이미지 포함)
     @Transactional
-    public OrderUpdateResponse updateOrderService(Long orderId, Long orderItemId, OrderUpdateRequest request) {
+    public OrderUpdateResponse updateOrderService(Long orderId, Long orderItemId, Long productId, Long quantity, MultipartFile image) {
 
         // 주문서를 찾아
         Order order = orderRepository.findByIdAndIsOrderCompletedFalse(orderId).orElseThrow(
@@ -119,19 +125,27 @@ public class OrderService {
                 () -> new CustomException(ErrorMessage.ORDER_NOT_FOUND)
         );
 
-        // request대로 주문을 수정해
-        if (request.getProductId() != null) {
-
-            Product product = productRepository.findById(request.getProductId()).orElseThrow(
+        // 상품 변경
+        if (productId != null) {
+            Product product = productRepository.findById(productId).orElseThrow(
                     () -> new CustomException(ErrorMessage.PRODUCT_NOT_FOUND)
             );
             orderItem.updateProduct(product);
         }
 
-        if (request.getQuantity() != null) {
-
-            long quantity = request.getQuantity();
+        // 수량 변경
+        if (quantity != null) {
             orderItem.updateQuantity(quantity);
+        }
+
+        // 이미지 업로드 후 상품 이미지 URL 업데이트
+        if (image != null && !image.isEmpty()) {
+            try {
+                FileUploadResponse uploadResponse = fileUploadService.fileUpload(image);
+                orderItem.getProduct().updateProductImage(uploadResponse.getUrl());
+            } catch (IOException e) {
+                throw new CustomException(ErrorMessage.FILE_UPLOAD_FAILED);
+            }
         }
 
         // 상품 변경으로 인한 총금액 수정
@@ -142,7 +156,7 @@ public class OrderService {
             totalProductAmount += item.getQuantity();
         }
         order.updateTotalPrice(changedTotalPrice);
-        order.updateOrderName(orderItem.getProduct().getName() + " 외 " + totalProductAmount+ "건");
+        order.updateOrderName(orderItem.getProduct().getName() + " 외 " + totalProductAmount + "건");
 
         return OrderUpdateResponse.from(orderItem);
     }
@@ -182,17 +196,14 @@ public class OrderService {
     // orderNumber(주문번호) 생성
     private String createTossOrderNumber() {
 
-        // 주문번호 최소 길이, 최대 길이
         int minLength = 6;
         int maxLength = 64;
 
         String dateTimePart = LocalDateTime.now().format(DATE_TIME_FORMATTER);
-
         String prefix = dateTimePart + "-";
 
         int maxRandomLength = maxLength - prefix.length();
         int minRandomLength = Math.max(0, minLength - prefix.length());
-
         int randomLength = random.nextInt(maxRandomLength - minRandomLength + 1) + minRandomLength;
 
         StringBuilder randomPart = new StringBuilder(randomLength);
@@ -211,8 +222,7 @@ public class OrderService {
         for (OrderItem item : order.getOrderItemList()) {
             totalAmount += item.getQuantity();
         }
-        // 본인 제외 나머지 갯수
         totalAmount -= 1;
-        return product.getName() + " 외 " + totalAmount+ "건";
+        return product.getName() + " 외 " + totalAmount + "건";
     }
 }

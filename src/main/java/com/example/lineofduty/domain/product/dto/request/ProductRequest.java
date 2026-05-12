@@ -21,4 +21,6 @@ public class ProductRequest {
     @NotNull
     @Min(value = 0)
     private Long stock;
+
+
 }
