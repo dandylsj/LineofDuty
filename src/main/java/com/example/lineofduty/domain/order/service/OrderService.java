@@ -67,7 +67,7 @@ public class OrderService {
 
         // 주문 완료된 주문서일 경우 빈 주문서 생성
         if (order.isOrderCompleted()) {
-            createNewOrder(userId, product);
+            order = createNewOrder(userId, product);
         }
 
         // 주문서에 추가하려는 product가 이미 존재하는지 확인하고 있으면 주문 수량만 올리기
