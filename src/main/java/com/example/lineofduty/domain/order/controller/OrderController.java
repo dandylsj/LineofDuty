@@ -6,6 +6,8 @@ import com.example.lineofduty.domain.order.dto.*;
 import com.example.lineofduty.domain.order.service.OrderService;
 
 import com.example.lineofduty.domain.user.dto.UserDetail;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+@Tag(name = "Order", description = "주문 관련 API")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/orders")
@@ -22,7 +25,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    // 주문 생성
+    @Operation(summary = "주문 생성", description = "새로운 주문을 생성합니다.")
     @PostMapping
     public ResponseEntity<GlobalResponse> createOrder(@Valid @RequestBody OrderCreateRequest request, @AuthenticationPrincipal UserDetail userDetail) {
 
@@ -31,7 +34,7 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.CREATED).body(GlobalResponse.success(SuccessMessage.ORDER_CREATE_SUCCESS, response));
     }
 
-    // 주문 조회
+    @Operation(summary = "주문 단건 조회", description = "주문 ID를 통해 특정 주문의 상세 정보를 조회합니다.")
     @GetMapping("/{orderId}")
     public ResponseEntity<GlobalResponse> getOrder(@PathVariable Long orderId) {
 
@@ -39,7 +42,7 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(GlobalResponse.success(SuccessMessage.ORDER_GET_SUCCESS, response));
     }
 
-    // 주문 수정 (이미지 포함)
+    @Operation(summary = "주문 수정", description = "특정 주문 항목의 상품, 수량, 이미지를 수정합니다.")
     @PatchMapping(value = "/{orderId}/orderItems/{orderItemId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<GlobalResponse> updateOrder(
             @PathVariable Long orderId,
@@ -52,7 +55,7 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(GlobalResponse.success(SuccessMessage.ORDER_UPDATE_SUCCESS, response));
     }
 
-    // 주문 취소
+    @Operation(summary = "주문 취소", description = "주문 ID를 통해 특정 주문을 취소합니다.")
     @DeleteMapping("/{orderId}")
     public ResponseEntity<GlobalResponse> deleteOrder(@PathVariable Long orderId, @AuthenticationPrincipal UserDetail userDetail) {
 

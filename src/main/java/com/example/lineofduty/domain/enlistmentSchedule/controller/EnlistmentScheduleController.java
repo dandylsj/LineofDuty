@@ -7,6 +7,8 @@ import com.example.lineofduty.domain.enlistmentSchedule.model.ScheduleOfThisWeek
 import com.example.lineofduty.domain.enlistmentSchedule.service.EnlistmentScheduleService;
 import com.example.lineofduty.domain.weather.dto.TodayWeatherResponse;
 import com.example.lineofduty.domain.weather.service.TodayWeatherService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,7 @@ import java.util.List;
 
 import static com.example.lineofduty.common.model.enums.SuccessMessage.*;
 
+@Tag(name = "Enlistment Schedule", description = "입영 일정 조회 관련 API")
 @RestController
 @RequestMapping("/api/enlistment")
 @RequiredArgsConstructor
@@ -30,9 +33,7 @@ public class EnlistmentScheduleController {
     private final EnlistmentScheduleService enlistmentScheduleService;
     private final TodayWeatherService shortTermWeatherService;
 
-    /*
-     * 입영 가능 일정 조회
-     * */
+    @Operation(summary = "입영 가능 일정 전체 조회", description = "등록된 전체 입영 가능 일정을 페이징 처리하여 조회합니다.")
     @GetMapping
     public ResponseEntity<GlobalResponse> getEnlistmentList(Pageable pageable) {
 
@@ -43,17 +44,13 @@ public class EnlistmentScheduleController {
         return ResponseEntity.ok(GlobalResponse.success(ENLISTMENT_SUCCESS, data));
     }
 
-    /*
-     * 입영 가능 일정 단건 조회
-     * */
+    @Operation(summary = "입영 일정 단건 조회", description = "입영 일정 ID를 통해 특정 입영 일정을 상세 조회합니다.")
     @GetMapping("/{scheduleId}")
     public ResponseEntity<GlobalResponse> getEnlistment(@PathVariable Long scheduleId) {
         return ResponseEntity.ok(GlobalResponse.success(ENLISTMENT_SUCCESS, enlistmentScheduleService.getEnlistment(scheduleId)));
     }
 
-    /**
-     * 이번 주 입영일정 요약
-     * */
+    @Operation(summary = "이번 주 입영일정 요약", description = "논산 훈련소 기준 날씨 정보와 이번 주 입영 일정 요약을 함께 조회합니다.")
     @GetMapping("/thisWeek")
     public ResponseEntity<GlobalResponse> summaryScheduleOfThisWeek(
             @RequestParam(defaultValue = "36") int nx, // 논산 훈련소 기준 X 좌표
@@ -69,10 +66,7 @@ public class EnlistmentScheduleController {
         return ResponseEntity.ok(GlobalResponse.success(SuccessMessage.SUMMARY_SUCCESS, data));
     }
 
-    /*
-     * 입영 일정 조회 기능 startDate ~ end Date
-     *
-     */
+    @Operation(summary = "기간별 입영 일정 검색", description = "시작일과 종료일을 지정하여 해당 기간 내의 입영 일정을 페이징 조회합니다.")
     @GetMapping("/search")
     public ResponseEntity<GlobalResponse> searchEnlistment(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
                                                            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,

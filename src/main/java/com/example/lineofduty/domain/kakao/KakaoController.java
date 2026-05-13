@@ -3,6 +3,8 @@ package com.example.lineofduty.domain.kakao;
 import com.example.lineofduty.common.model.enums.SuccessMessage;
 import com.example.lineofduty.common.model.response.GlobalResponse;
 import com.example.lineofduty.domain.token.TokenResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
+@Tag(name = "Kakao Login", description = "카카오 소셜 로그인 관련 API")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth/kakao")
@@ -24,8 +27,7 @@ public class KakaoController {
     @Value("${frontend.url:}")
     private String frontendUrl;
 
-    // 카카오 로그인 콜백
-    // frontendUrl이 설정되어 있으면 프론트엔드로 리다이렉트, 없으면 JSON으로 토큰 반환
+    @Operation(summary = "카카오 로그인 콜백", description = "카카오 로그인 성공 후 인증 코드를 받아 처리하며, 성공 시 토큰을 반환하거나 프론트엔드로 리다이렉트합니다.")
     @GetMapping("/callback")
     public ResponseEntity<?> kakaoLogin(@RequestParam("code") String code, HttpServletResponse response) throws IOException {
 

@@ -8,6 +8,8 @@ import com.example.lineofduty.domain.fileUpload.FileUploadService;
 import com.example.lineofduty.domain.product.dto.request.ProductRequest;
 import com.example.lineofduty.domain.product.dto.response.ProductResponse;
 import com.example.lineofduty.domain.product.service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+@Tag(name = "Product", description = "상품 관련 API")
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -28,6 +31,7 @@ public class ProductController {
     private final ProductService productService;
     private final FileUploadService fileUploadService;
 
+    @Operation(summary = "상품 등록", description = "관리자가 새로운 상품을 등록합니다.")
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/admin/products")
     public ResponseEntity<GlobalResponse> createProduct(@Valid @RequestBody ProductRequest request) {
@@ -36,6 +40,7 @@ public class ProductController {
                 .body(GlobalResponse.success(SuccessMessage.PRODUCT_CREATE_SUCCESS, response));
     }
 
+    @Operation(summary = "상품 단건 조회", description = "상품 ID를 통해 특정 상품의 상세 정보를 조회합니다.")
     @GetMapping("/products/{productId}")
     public ResponseEntity<GlobalResponse> getProduct(@PathVariable Long productId) {
         ProductResponse response = productService.getProduct(productId);
@@ -43,6 +48,7 @@ public class ProductController {
                 .body(GlobalResponse.success(SuccessMessage.PRODUCT_GET_ONE_SUCCESS, response));
     }
 
+    @Operation(summary = "상품 목록 조회", description = "등록된 상품들의 목록을 페이징하여 조회합니다. 키워드 검색 및 정렬이 가능합니다.")
     @GetMapping("/products")
     public ResponseEntity<GlobalResponse> getProDuctList(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "createdAt") String sort, @RequestParam(defaultValue = "desc") String direction, @RequestParam(required = false) String keyword) {
         Page<ProductResponse> products = productService.getProductList(page, size, sort, direction, keyword);
@@ -50,6 +56,7 @@ public class ProductController {
                 .body(GlobalResponse.success(SuccessMessage.PRODUCT_GET_ALL_SUCCESS, PageResponse.from(products)));
     }
 
+    @Operation(summary = "상품 수정", description = "관리자가 상품 ID를 통해 특정 상품의 정보를 수정합니다.")
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/admin/products/{productId}")
     public ResponseEntity<GlobalResponse> updateProduct(@PathVariable Long productId, @Valid @RequestBody ProductRequest request) {
@@ -58,6 +65,7 @@ public class ProductController {
                 .body(GlobalResponse.success(SuccessMessage.PRODUCT_UPDATE_SUCCESS, response));
     }
 
+    @Operation(summary = "상품 이미지 업로드", description = "관리자가 특정 상품에 이미지를 업로드합니다.")
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "/admin/products/{productId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<GlobalResponse> uploadProductImage(
@@ -70,6 +78,7 @@ public class ProductController {
         return ResponseEntity.ok(GlobalResponse.success(SuccessMessage.PRODUCT_UPDATE_SUCCESS, fileResponse));
     }
 
+    @Operation(summary = "상품 삭제", description = "관리자가 상품 ID를 통해 특정 상품을 삭제합니다.")
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/admin/products/{productId}")
     public ResponseEntity<GlobalResponse> deleteProduct(@PathVariable Long productId) {
