@@ -68,7 +68,12 @@ public enum SuccessMessage {
     NOTICE_DELETE_SUCCESS("공지가 삭제되었습니다."),
     SUMMARY_SUCCESS("요약 완료"),
     WEATHER_READ_SUCCESS("날씨정보 요청완료"),
-    LOGIN_SUCCESS("로그인 성공");
+    LOGIN_SUCCESS("로그인 성공"),
+
+    BANNER_LIST_SUCCESS("배너 목록 조회 성공"),
+    BANNER_CREATE_SUCCESS("배너 등록 완료"),
+    BANNER_UPDATE_SUCCESS("배너 수정 완료"),
+    BANNER_DELETE_SUCCESS("배너 삭제 완료");
 
 
     private final String message;

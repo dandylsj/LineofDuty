@@ -50,6 +50,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/qnas/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/weather/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/banners").permitAll()
 
                         // 에러 페이지 요청 추가
                         .requestMatchers("/error").permitAll()
