@@ -95,6 +95,7 @@ kakao:
 
 minio:
   endpoint: ${MINIO_ENDPOINT:http://lineofduty-minio:9000}
+  public-endpoint: ${MINIO_PUBLIC_ENDPOINT:http://lsjyahoo.synology.me:9000}
   access-key: ${MINIO_ACCESS_KEY:admin}
   secret-key: ${MINIO_SECRET_KEY:password123}
   bucket: ${MINIO_BUCKET:lineofduty}
