@@ -73,7 +73,8 @@ public enum SuccessMessage {
     BANNER_LIST_SUCCESS("배너 목록 조회 성공"),
     BANNER_CREATE_SUCCESS("배너 등록 완료"),
     BANNER_UPDATE_SUCCESS("배너 수정 완료"),
-    BANNER_DELETE_SUCCESS("배너 삭제 완료");
+    BANNER_DELETE_SUCCESS("배너 삭제 완료"),
+    CATEGORY_CREATE_SUCCESS("카테고리 생성 완료");
 
 
     private final String message;
