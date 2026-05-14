@@ -23,7 +23,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +32,7 @@ public class ChatBotService {
     private final ChatRoomRepository chatRoomRepository;
     private final ChatMessageRepository chatMessageRepository;
     private final UserRepository userRepository;
-    private final OpenAIService openAIService;
+    private final GeminiService geminiService;
 
     // 내 채팅방 조회 (없으면 자동 생성)
     @Transactional
@@ -93,11 +92,11 @@ public class ChatBotService {
 
         // AI 응답 생성
         long startTime = System.currentTimeMillis();
-        String aiResponse = openAIService.generateResponse(request.getContent());
+        String aiResponse = geminiService.generateResponse(request.getContent());
         long responseTime = System.currentTimeMillis() - startTime;
 
-        // AI 메시지 저장
-        Map<String, Object> metadata = openAIService.createMetadata(
+        // AI 메시지 저장 메타데이터
+        Map<String, Object> metadata = geminiService.createMetadata(
                 aiResponse.length() / 4,  // 대략적인 토큰 수
                 responseTime
         );

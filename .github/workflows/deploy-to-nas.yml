@@ -90,7 +90,7 @@ jobs:
           echo "FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
 
           # 7. 외부 API 설정
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
           echo "TOSS_SECRET_KEY=${{ secrets.TOSS_SECRET_KEY }}" >> .env
           echo "WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}" >> .env
 
