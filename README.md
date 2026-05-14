@@ -2,7 +2,7 @@
 
 ### 개요
 
-로컬 환경에서 API 문서는 Swagger UI를 통해 확인할 수 있습니다.
+현재 개인 Nas 서버를 통해 구동중이며 아래 링크를 통해 Swagger 와 웹페이지 링크를 확인할 수 있습니다.
 
 - Swagger UI: https://lsjyahoo.synology.me:8443/swagger-ui/index.html#/
 - 웹페이지 링크 : https://lineof-duty-front.vercel.app/
