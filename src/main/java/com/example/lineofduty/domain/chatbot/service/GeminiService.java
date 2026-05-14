@@ -30,8 +30,8 @@ public class GeminiService {
     @Value("${gemini.api.key:}")
     private String apiKey;
 
-    private static final String GEMINI_API_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=%s";
-    private static final String AI_MODEL = "gemini-pro";
+    private static final String GEMINI_API_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=%s";
+    private static final String AI_MODEL = "gemini-1.5-flash";
 
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
