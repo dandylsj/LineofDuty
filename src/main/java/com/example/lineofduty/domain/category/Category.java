@@ -28,13 +28,12 @@ public class Category extends BaseEntity {
     @JoinColumn(name = "parent_id")
     private Category parent;
 
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
     private List<Category> children = new ArrayList<>();
 
-    public Category (String name, String description) {
+    public Category(String name, String description, Category parent) {
         this.name = name;
         this.description = description;
+        this.parent = parent;
     }
-
-
 }
