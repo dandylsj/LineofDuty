@@ -2,7 +2,10 @@ package com.example.lineofduty.domain.product.service;
 
 import com.example.lineofduty.common.exception.CustomException;
 import com.example.lineofduty.common.exception.ErrorMessage;
+import com.example.lineofduty.common.model.enums.DeliveryType;
 import com.example.lineofduty.common.model.enums.ProductStatus;
+import com.example.lineofduty.domain.category.Category;
+import com.example.lineofduty.domain.category.CategoryRepository;
 import com.example.lineofduty.domain.product.dto.request.ProductRequest;
 import com.example.lineofduty.domain.product.dto.response.ProductResponse;
 import com.example.lineofduty.domain.product.repository.ProductRepository;
@@ -20,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     // 상품 등록
     @Transactional
@@ -37,10 +41,25 @@ public class ProductService {
             throw new CustomException(ErrorMessage.INVALID_STOCK);
         }
 
-        Product product = new Product(request.getName(), request.getDescription(), request.getPrice(), request.getStock(), ProductStatus.ON_SALE);
-        Product savedProduct = productRepository.save(product);
+        Product product = new Product(
+                request.getName(),
+                request.getDescription(),
+                request.getPrice(),
+                request.getStock(),
+                request.getShippingFee() != null ? request.getShippingFee() : 0L,
+                request.getFreeShippingThreshold(),
+                request.getDeliveryType() != null ? request.getDeliveryType() : DeliveryType.STANDARD,
+                ProductStatus.ON_SALE
+        );
 
-        return ProductResponse.from(savedProduct);
+        // 카테고리 설정 (선택사항)
+        if (request.getCategoryId() != null) {
+            Category category = categoryRepository.findById(request.getCategoryId())
+                    .orElseThrow(() -> new CustomException(ErrorMessage.CATEGORY_NOT_FOUND));
+            product.updateCategory(category);
+        }
+
+        return ProductResponse.from(productRepository.save(product));
     }
 
     // 상품 단건 조회
@@ -76,6 +95,16 @@ public class ProductService {
                 .orElseThrow(() -> new CustomException(ErrorMessage.PRODUCT_NOT_FOUND));
 
         product.update(request);
+
+        // 카테고리 수정 (null이면 카테고리 해제, 값이 있으면 변경)
+        if (request.getCategoryId() != null) {
+            Category category = categoryRepository.findById(request.getCategoryId())
+                    .orElseThrow(() -> new CustomException(ErrorMessage.CATEGORY_NOT_FOUND));
+            product.updateCategory(category);
+        } else {
+            product.updateCategory(null);
+        }
+
         productRepository.saveAndFlush(product);
 
         return ProductResponse.from(product);
@@ -103,7 +132,6 @@ public class ProductService {
     // 재고 감소 (분산 락 적용 - 주문 시 사용)
     @Transactional
     public void decreaseStock(Long productId, Long quantity) {
-
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new CustomException(ErrorMessage.PRODUCT_NOT_FOUND));
 
@@ -113,11 +141,9 @@ public class ProductService {
     // 재고 증가 (분산 락 적용 - 주문 취소 시 사용)
     @Transactional
     public void increaseStock(Long productId, Long quantity) {
-
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new CustomException(ErrorMessage.PRODUCT_NOT_FOUND));
 
         product.increaseStock(quantity);
     }
 }
-

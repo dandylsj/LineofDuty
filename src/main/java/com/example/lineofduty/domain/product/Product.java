@@ -2,6 +2,7 @@ package com.example.lineofduty.domain.product;
 
 import com.example.lineofduty.common.exception.CustomException;
 import com.example.lineofduty.common.exception.ErrorMessage;
+import com.example.lineofduty.common.model.enums.DeliveryType;
 import com.example.lineofduty.common.model.enums.ProductStatus;
 import com.example.lineofduty.domain.category.Category;
 import com.example.lineofduty.domain.product.dto.request.ProductRequest;
@@ -44,11 +45,26 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private ProductStatus status;
 
-    public Product(String name, String description, Long price, Long stock, ProductStatus status) {
+    @Column(nullable = false)
+    private Long shippingFee = 0L;
+
+    @Column
+    private Long freeShippingThreshold; // 이 금액 이상 구매 시 무료배송 (null이면 조건 없음)
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private DeliveryType deliveryType = DeliveryType.STANDARD; // 기본값: 일반배송
+
+    public Product(String name, String description, Long price, Long stock,
+                   Long shippingFee, Long freeShippingThreshold, DeliveryType deliveryType,
+                   ProductStatus status) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
+        this.shippingFee = shippingFee;
+        this.freeShippingThreshold = freeShippingThreshold;
+        this.deliveryType = deliveryType;
         this.status = status;
     }
 
@@ -69,9 +85,14 @@ public class Product extends BaseEntity {
         if (request.getName() != null) this.name = request.getName();
         if (request.getDescription() != null) this.description = request.getDescription();
         if (request.getPrice() != null) this.price = request.getPrice();
-        if (request.getStock() != null) {
-            updateStock(request.getStock());
-        }
+        if (request.getStock() != null) updateStock(request.getStock());
+        if (request.getShippingFee() != null) this.shippingFee = request.getShippingFee();
+        if (request.getFreeShippingThreshold() != null) this.freeShippingThreshold = request.getFreeShippingThreshold();
+        if (request.getDeliveryType() != null) this.deliveryType = request.getDeliveryType();
+    }
+
+    public void updateCategory(Category category) {
+        this.category = category;
     }
 
     public void decreaseStock(Long quantity) {
