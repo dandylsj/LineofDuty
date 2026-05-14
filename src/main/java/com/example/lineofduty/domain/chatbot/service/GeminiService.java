@@ -30,8 +30,9 @@ public class GeminiService {
     @Value("${gemini.api.key:}")
     private String apiKey;
 
-    private static final String GEMINI_API_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=%s";
-    private static final String AI_MODEL = "gemini-1.5-flash-latest";
+    // gemini-2.0-flash 모델 사용 (gemini-1.5-flash는 2025년 10월 이후 deprecated)
+    private static final String GEMINI_API_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=%s";
+    private static final String AI_MODEL = "gemini-2.0-flash";
 
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
