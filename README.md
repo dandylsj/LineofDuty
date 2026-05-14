@@ -4,7 +4,11 @@
 
 로컬 환경에서 API 문서는 Swagger UI를 통해 확인할 수 있습니다.
 
-- Swagger UI: http://localhost:8080/swagger-ui/index.html
+- Swagger UI: https://lsjyahoo.synology.me:8443/swagger-ui/index.html#/
+- 웹페이지 링크 : https://lineof-duty-front.vercel.app/
+
+<img width="1693" height="941" alt="스크린샷 2026-05-15 오전 4 48 02" src="https://github.com/user-attachments/assets/378eaf75-579e-4ebc-94f8-10ea42a95503" />
+
 
 ### JWT 인증 방법
 
