@@ -31,4 +31,6 @@ public class ProductRequest {
     private Long freeShippingThreshold; // 무료배송 기준금액 (null이면 조건 없음)
 
     private DeliveryType deliveryType; // null이면 기본값(STANDARD) 유지
+
+    private String detailContent; // 상세 내용 (HTML 또는 텍스트, null 허용)
 }

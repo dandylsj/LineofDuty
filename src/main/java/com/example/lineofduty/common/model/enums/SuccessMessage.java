@@ -76,7 +76,10 @@ public enum SuccessMessage {
     BANNER_DELETE_SUCCESS("배너 삭제 완료"),
     CATEGORY_CREATE_SUCCESS("카테고리 생성 완료"),
     CATEGORY_READ_SUCCESS("카테고리 조회 성공"),
-    CATEGORY_DELETE_SUCCESS("카테고리 삭제 완료");
+    CATEGORY_DELETE_SUCCESS("카테고리 삭제 완료"),
+    PRODUCT_IMAGE_ADD_SUCCESS("상품 이미지 추가 완료"),
+    PRODUCT_IMAGE_DELETE_SUCCESS("상품 이미지 삭제 완료"),
+    PRODUCT_IMAGE_LIST_SUCCESS("상품 이미지 목록 조회 성공");
 
 
     private final String message;

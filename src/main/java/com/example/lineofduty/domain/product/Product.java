@@ -6,10 +6,13 @@ import com.example.lineofduty.common.model.enums.DeliveryType;
 import com.example.lineofduty.common.model.enums.ProductStatus;
 import com.example.lineofduty.domain.category.Category;
 import com.example.lineofduty.domain.product.dto.request.ProductRequest;
+import com.example.lineofduty.domain.product.entity.ProductImage;
 import com.example.lineofduty.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "products")
@@ -55,6 +58,13 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private DeliveryType deliveryType = DeliveryType.STANDARD; // 기본값: 일반배송
 
+    @Column(columnDefinition = "LONGTEXT")
+    private String detailContent; // 상세 내용 (HTML 또는 텍스트)
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("orderIndex ASC")
+    private java.util.List<ProductImage> images = new ArrayList<>();
+
     public Product(String name, String description, Long price, Long stock,
                    Long shippingFee, Long freeShippingThreshold, DeliveryType deliveryType,
                    ProductStatus status) {
@@ -89,6 +99,7 @@ public class Product extends BaseEntity {
         if (request.getShippingFee() != null) this.shippingFee = request.getShippingFee();
         if (request.getFreeShippingThreshold() != null) this.freeShippingThreshold = request.getFreeShippingThreshold();
         if (request.getDeliveryType() != null) this.deliveryType = request.getDeliveryType();
+        if (request.getDetailContent() != null) this.detailContent = request.getDetailContent();
     }
 
     public void updateCategory(Category category) {

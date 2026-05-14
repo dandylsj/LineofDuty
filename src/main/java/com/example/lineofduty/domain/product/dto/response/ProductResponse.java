@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Getter
@@ -24,6 +26,8 @@ public class ProductResponse {
     private Long shippingFee;
     private Long freeShippingThreshold;
     private DeliveryType deliveryType;
+    private String detailContent;
+    private List<ProductImageResponse> images;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
@@ -41,6 +45,10 @@ public class ProductResponse {
                 product.getShippingFee(),
                 product.getFreeShippingThreshold(),
                 product.getDeliveryType(),
+                product.getDetailContent(),
+                product.getImages().stream()
+                        .map(ProductImageResponse::from)
+                        .collect(Collectors.toList()),
                 product.getCreatedAt(),
                 product.getModifiedAt()
         );
