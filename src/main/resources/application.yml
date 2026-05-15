@@ -37,9 +37,6 @@ spring:
   application:
     name: Lineofduty
 
-server:
-  forward-headers-strategy: framework
-
   data:
     redis:
       host: ${REDIS_HOST}
@@ -66,6 +63,15 @@ server:
     type: caffeine
     caffeine:
       spec: maximumSize=500,expireAfterWrite=10m
+
+server:
+  forward-headers-strategy: framework
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
   
 
 gemini:
