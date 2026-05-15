@@ -37,6 +37,9 @@ spring:
   application:
     name: Lineofduty
 
+server:
+  forward-headers-strategy: framework
+
   data:
     redis:
       host: ${REDIS_HOST}
