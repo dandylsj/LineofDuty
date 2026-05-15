@@ -72,7 +72,10 @@ springdoc:
     path: /swagger-ui.html
   api-docs:
     path: /v3/api-docs
-  
+
+swagger:
+  server-url: ${SWAGGER_SERVER_URL:http://localhost:8080}
+
 
 gemini:
   api:
