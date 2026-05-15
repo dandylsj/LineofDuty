@@ -103,6 +103,7 @@ jobs:
 
           # 9. 기타
           echo "TZ=Asia/Seoul" >> .env
+          echo "SERVER_FORWARD_HEADERS_STRATEGY=framework" >> .env
 
       - name: NAS에 자동 배포
         run: |
