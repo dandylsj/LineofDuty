@@ -1410,91 +1410,64 @@ DB I/O를 제거하고 읽기 성능을 개선하였다.
 
 ## 🛠️ 기술 스택
 
-**Language**
-
-![Java](https://img.shields.io/badge/Java-17-007396?logo=java)
-![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-6DB33F?logo=springboot)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql)
-![Redis](https://img.shields.io/badge/Redis-7.0-DC382D?logo=redis)
-![AWS](https://img.shields.io/badge/AWS-EC2%2FRDS%2FS3-FF9900?logo=amazonaws)
-
-[Java 17](https://www.notion.so/Java-17-3062dc3ef51481b6bc89eadce56bb1a4?pvs=21)
+## 🛠 Tech Stack
 
 **Language**
 
-[React](https://www.notion.so/React-3062dc3ef51481479034d58127876e6c?pvs=21)
+![Java](https://img.shields.io/badge/Java_17-007396?style=for-the-badge&logo=openjdk&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
-[Vercel](https://www.notion.so/Vercel-3062dc3ef5148167968eff73387698eb?pvs=21)
+**Frontend**
+
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 **Backend**
 
-[Spring boot](https://www.notion.so/Spring-boot-3062dc3ef51481ba8327c767d2722d2b?pvs=21)
-
-[Spring Boot Web](https://www.notion.so/Spring-Boot-Web-3062dc3ef5148146b13edec9af78428a?pvs=21)
-
-[Spring Data JPA](https://www.notion.so/Spring-Data-JPA-3062dc3ef5148198b285eb2a5962954c?pvs=21)
-
-[Spring AI](https://www.notion.so/Spring-AI-3062dc3ef51481e49f25ea88e8b128c4?pvs=21)
-
-[Lombok](https://www.notion.so/Lombok-3062dc3ef51481528520d743b790c277?pvs=21)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)
+![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Spring AI](https://img.shields.io/badge/Spring_AI-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Lombok](https://img.shields.io/badge/Lombok-BC4521?style=for-the-badge&logo=lombok&logoColor=white)
 
 **Database**
 
-[MySQL](https://www.notion.so/MySQL-3062dc3ef51481cf9b13e5b6164ac939?pvs=21)
-
-[Redis](https://www.notion.so/Redis-3062dc3ef51481c18297ff93765fe6fb?pvs=21)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 
 **Security**
 
-[Spring Security](https://www.notion.so/Spring-Security-3062dc3ef51481d18784cdf16692416d?pvs=21)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![OAuth2](https://img.shields.io/badge/OAuth_2.0-EB5424?style=for-the-badge&logo=auth0&logoColor=white)
 
-[JWT](https://www.notion.so/JWT-3062dc3ef514818ebe55fe75af5ee13a?pvs=21)
+**Cloud**
 
-[Oauth 2.0](https://www.notion.so/Oauth-2-0-3062dc3ef514813d9b57d76e6c58794b?pvs=21)
-
-**Cloud Service**
-
-[Ubuntu Linux](https://www.notion.so/Ubuntu-Linux-3062dc3ef5148192a995f509076130e1?pvs=21)
-
-[AWS EC2](https://www.notion.so/AWS-EC2-3062dc3ef514810c93c4d7bcef6dbed7?pvs=21)
-
-[AWS ECR](https://www.notion.so/AWS-ECR-3062dc3ef51481e4a347c3d4fe42801d?pvs=21)
-
-[AWS RDS](https://www.notion.so/AWS-RDS-3062dc3ef51481daa50bf30301a2229e?pvs=21)
-
-[Amazon S3](https://www.notion.so/Amazon-S3-3062dc3ef51481d4ae7dd99a4b0aae46?pvs=21)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
+![AWS ECR](https://img.shields.io/badge/AWS_ECR-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![AWS RDS](https://img.shields.io/badge/AWS_RDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white)
+![Amazon S3](https://img.shields.io/badge/Amazon_S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white)
 
 **Infra & CI/CD**
 
-[Docker](https://www.notion.so/Docker-3062dc3ef51481ddb4fcdf9433dd7ef1?pvs=21)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 
-[Github Actions](https://www.notion.so/Github-Actions-3062dc3ef51481609f83dfcc6a682952?pvs=21)
+**API & Docs**
 
-**API**
-
-[Swagger](https://www.notion.so/Swagger-3062dc3ef51481bd9c84fd4f784cf0d7?pvs=21)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
+![Toss Payments](https://img.shields.io/badge/Toss_Payments-0064FF?style=for-the-badge&logo=tosspayments&logoColor=white)
+![Kakao](https://img.shields.io/badge/Kakao_OAuth-FFCD00?style=for-the-badge&logo=kakao&logoColor=black)
+![Google OAuth](https://img.shields.io/badge/Google_OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![Naver Maps](https://img.shields.io/badge/Naver_Maps-03C75A?style=for-the-badge&logo=naver&logoColor=white)
+![Kakao Maps](https://img.shields.io/badge/Kakao_Maps-FFCD00?style=for-the-badge&logo=kakao&logoColor=black)
+![공공데이터포털](https://img.shields.io/badge/공공데이터_포털-003087?style=for-the-badge&logo=data&logoColor=white)
 
 **Test**
 
-[k6](https://www.notion.so/k6-3062dc3ef51481a6acc9eab78524bbfd?pvs=21)
-
-[JUnit5](https://www.notion.so/JUnit5-3062dc3ef51481fb809ad7415c075abf?pvs=21)
-
-Open Api
-
-[toss payments](https://www.notion.so/toss-payments-30c2dc3ef514800980f6eb98a56634e7?pvs=21)
-
-[Kakao OAuth 2.0](https://www.notion.so/Kakao-OAuth-2-0-30c2dc3ef514809ca8dbe734b7ca6776?pvs=21)
-
-[공공 데이터 포털](https://www.notion.so/30c2dc3ef514806da028ff9472d94441?pvs=21)
-
-[Naver Maps (1)](https://www.notion.so/Naver-Maps-1-30c2dc3ef514800d9d7df626691c087e?pvs=21)
-
-[Kakao Maps (1)](https://www.notion.so/Kakao-Maps-1-30c2dc3ef51480199f38c9d5c5125617?pvs=21)
-
-[Kakaotalk Message (1)](https://www.notion.so/Kakaotalk-Message-1-30c2dc3ef51480058d85f8c31ad63a32?pvs=21)
-
-[Google OAuth 2.0 (1)](https://www.notion.so/Google-OAuth-2-0-1-30c2dc3ef514803db66eeb1a0c659ed5?pvs=21)
+![JUnit5](https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+![k6](https://img.shields.io/badge/k6-7D64FF?style=for-the-badge&logo=k6&logoColor=white)
 
 ## 📁 설계 문서
 
