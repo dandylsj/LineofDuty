@@ -1,34 +1,20 @@
-## Swagger UI 
-
-### 개요
+# 배포 사이트
 
 현재 개인 Nas 서버를 통해 구동중이며 아래 링크를 통해 Swagger 와 웹페이지 링크를 확인할 수 있습니다.
 
 - Swagger UI: https://lsjyahoo.synology.me:8443/swagger-ui/index.html#/
 - 웹페이지 링크 : https://lineof-duty-front.vercel.app/
 
-<img width="1693" height="941" alt="스크린샷 2026-05-15 오전 4 48 02" src="https://github.com/user-attachments/assets/378eaf75-579e-4ebc-94f8-10ea42a95503" />
+## 홈 화면
+<img width="1246" height="1535" alt="image" src="https://github.com/user-attachments/assets/9015bbaa-8082-40b2-8d01-7b44a177c1c8" />
 
 
-### JWT 인증 방법
+## 입영신청 페이지
+<img width="1239" height="1492" alt="image" src="https://github.com/user-attachments/assets/1a50b135-f248-419a-a70c-f2140626acaa" />
 
-본 프로젝트는 JWT 기반 인증을 사용합니다.
-
-1. `/auth/login` API를 호출하여 access token을 발급받습니다.
-![img.png](img.png)
-2. Swagger UI 우측 상단의 **Authorize** 버튼을 클릭합니다.
-![img_1.png](img_1.png)
-3. 아래 형식으로 토큰을 입력합니다.
-![img_2.png](img_2.png)
-4. Authorize 버튼을 클릭한 후 보호된 API를 호출할 수 있습니다.
-
-### Request Body 입력 방법
-
-Swagger UI에서 Request Body가 필요한 API는 다음 순서로 테스트할 수 있습니다.
-
-1. API 선택 후 **Try it out** 버튼 클릭
-2. Request Body 영역에 JSON 형식으로 값 입력
-3. **Execute** 버튼 클릭
+## 상품 판매 페이지
+<img width="1242" height="1079" alt="image" src="https://github.com/user-attachments/assets/01e6adab-255b-4665-8f2b-fe266182415e" />
+<img width="902" height="1422" alt="image" src="https://github.com/user-attachments/assets/0a3f6468-2ccd-4b32-84de-02aca5a555fc" />
 
 
 # 🪖 Line of Duty
