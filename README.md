@@ -349,6 +349,12 @@ EnlistmentSchedulefindByIdWithLock(Long id);
 </details>
 
 ## ⚡ 트러블 슈팅
+
+### 토스 페이먼츠 결제 흐름 버그
+- **문제**: 결제 중 이탈 후 재시도 시 금액 누적, 미완료 결제가 완료로 표시
+- **원인**: READY 상태 Payment를 DONE과 구분하지 않고 existsByOrder()로 일괄 차단
+- **해결**: 상태별 분기 처리, READY 결제 재생성 허용, OrderGetResponse에 paymentStatus 추가
+
 <details>
 <summary><strong>입영신청 동시성 문제 </strong></summary>
 
@@ -1405,6 +1411,12 @@ DB I/O를 제거하고 읽기 성능을 개선하였다.
 ## 🛠️ 기술 스택
 
 **Language**
+
+![Java](https://img.shields.io/badge/Java-17-007396?logo=java)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-6DB33F?logo=springboot)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql)
+![Redis](https://img.shields.io/badge/Redis-7.0-DC382D?logo=redis)
+![AWS](https://img.shields.io/badge/AWS-EC2%2FRDS%2FS3-FF9900?logo=amazonaws)
 
 [Java 17](https://www.notion.so/Java-17-3062dc3ef51481b6bc89eadce56bb1a4?pvs=21)
 
