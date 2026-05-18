@@ -9,6 +9,9 @@ import com.example.lineofduty.domain.order.dto.*;
 import com.example.lineofduty.domain.order.repository.OrderRepository;
 import com.example.lineofduty.domain.orderItem.OrderItem;
 import com.example.lineofduty.domain.orderItem.repository.OrderItemRepository;
+import com.example.lineofduty.domain.payment.Payment;
+import com.example.lineofduty.domain.payment.PaymentStatus;
+import com.example.lineofduty.domain.payment.repository.PaymentRepository;
 import com.example.lineofduty.domain.product.Product;
 import com.example.lineofduty.domain.product.repository.ProductRepository;
 import com.example.lineofduty.domain.user.User;
@@ -33,6 +36,7 @@ public class OrderService {
     private final OrderItemRepository orderItemRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final PaymentRepository paymentRepository;
     private final FileUploadService fileUploadService;
 
     private static final String CHARSET =
@@ -108,7 +112,12 @@ public class OrderService {
                 () -> new CustomException(ErrorMessage.ORDER_NOT_FOUND)
         );
 
-        return OrderGetResponse.from(order);
+        // 결제 레코드가 있어도 DONE일 때만 실제 결제 완료, 없으면 null 반환
+        PaymentStatus paymentStatus = paymentRepository.findByOrder(order)
+                .map(Payment::getStatus)
+                .orElse(null);
+
+        return OrderGetResponse.from(order, paymentStatus);
     }
 
     // 주문 수정 (이미지 포함)

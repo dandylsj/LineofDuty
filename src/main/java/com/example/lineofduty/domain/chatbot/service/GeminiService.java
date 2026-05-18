@@ -114,29 +114,29 @@ public class GeminiService {
             sb.append("[현재 판매 중인 상품 목록]\n");
             List<Product> products = productRepository.findAll();
             for (Product p : products) {
-                sb.append(String.format("- 상품명: %s, 가격: %d원, 재고: %d개, 설명: %s\n", 
+                sb.append(String.format("- 상품명: %s, 가격: %d원, 재고: %d개, 설명: %s%n",
                         p.getName(), p.getPrice(), p.getStock(), p.getDescription()));
             }
             
             sb.append("\n[최신 공지사항]\n");
             List<Notice> notices = noticeRepository.findAll();
             for (Notice n : notices) {
-                sb.append(String.format("- 제목: %s, 내용: %s\n", n.getTitle(), n.getContent()));
+                sb.append(String.format("- 제목: %s, 내용: %s%n", n.getTitle(), n.getContent()));
             }
             
             sb.append("\n[자주 묻는 질문 (QnA)]\n");
             List<Qna> qnas = qnaRepository.findAll();
             for (Qna q : qnas) {
-                sb.append(String.format("- 질문: %s, 내용: %s\n", q.getTitle(), q.getQuestionContent()));
+                sb.append(String.format("- 질문: %s, 내용: %s%n", q.getTitle(), q.getQuestionContent()));
                 if (q.getAskContent() != null && !q.getAskContent().isEmpty()) {
-                    sb.append(String.format("  -> 답변: %s\n", q.getAskContent()));
+                    sb.append(String.format("  -> 답변: %s%n", q.getAskContent()));
                 }
             }
             
             sb.append("\n[현재 신청 가능한 입영 일정]\n");
             List<EnlistmentSchedule> schedules = enlistmentScheduleRepository.findAll();
             for (EnlistmentSchedule s : schedules) {
-                sb.append(String.format("- 입영 날짜: %s, 잔여 자리: %d명\n", 
+                sb.append(String.format("- 입영 날짜: %s, 잔여 자리: %d명%n",
                         s.getEnlistmentDate(), s.getRemainingSlots()));
             }
 

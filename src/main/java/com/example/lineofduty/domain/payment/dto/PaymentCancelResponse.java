@@ -33,4 +33,15 @@ public class PaymentCancelResponse {
                 payment.getStatus()
         );
     }
+
+    public static PaymentCancelResponse canceled(Payment payment) {
+        return new PaymentCancelResponse(
+                payment.getId(),
+                payment.getPaymentKey(),
+                payment.getOrder().getOrderNumber(),
+                payment.getOrder().getOrderName(),
+                payment.getTotalPrice(),
+                PaymentStatus.CANCELED
+        );
+    }
 }

@@ -66,9 +66,16 @@ public class PaymentService {
         );
 
         // 이미 결제한 주문인지 확인해
-        if (paymentRepository.existsByOrder(order)) {
-            throw new CustomException(ErrorMessage.ALREADY_PAID_ORDER);
-        }
+        paymentRepository.findByOrder(order).ifPresent(existing -> {
+            if (existing.getStatus() == PaymentStatus.DONE) {
+                throw new CustomException(ErrorMessage.ALREADY_PAID_ORDER);
+            }
+            if (existing.getStatus() == PaymentStatus.CANCELED) {
+                throw new CustomException(ErrorMessage.ALREADY_CANCELED_PAYMENT);
+            }
+            // READY / ABORTED 상태면 중간에 나간 것이므로 삭제 후 재생성 허용
+            paymentRepository.delete(existing);
+        });
 
         // 니가 이 결제에 접근 권한을 가지고 있는지 확인해
         if (!order.getUser().getId().equals(userId)) {
@@ -248,9 +255,10 @@ public class PaymentService {
             throw new CustomException(ErrorMessage.ACCESS_DENIED);
         }
 
-        // 아직 승인되지 않은 결제일 경우
+        // 아직 승인되지 않은 결제(READY)는 토스 승인 전이므로 DB에서 바로 삭제
         if (payment.getStatus() == PaymentStatus.READY) {
-            throw new CustomException(ErrorMessage.NOT_YET_CONFIRM);
+            paymentRepository.delete(payment);
+            return PaymentCancelResponse.canceled(payment);
         }
 
         // 이미 취소, 환불된 결제일 경우
