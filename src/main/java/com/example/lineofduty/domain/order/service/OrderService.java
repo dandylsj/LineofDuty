@@ -74,7 +74,7 @@ public class OrderService {
             order = createNewOrder(userId, product);
         }
 
-        // 주문서에 추가하려는 product가 이미 존재하는지 확인하고 있으면 주문 수량만 올리기
+        // 주문서에 추가하려는 product가 이미 존재하는지 확인
         OrderItem orderItem = null;
         for (OrderItem item : order.getOrderItemList()) {
             if (item.getProduct().getId().equals(request.getProductId())) {
@@ -90,12 +90,14 @@ public class OrderService {
             OrderItem savedOrderItem = orderItemRepository.save(orderItem);
             order.addOrderItem(savedOrderItem);
             order.updateOrderName(createOrderName(order, product));
-        } else if (orderItem.getQuantity() + request.getQuantity() <= product.getStock()) {
+        } else if (request.getQuantity() <= product.getStock()) {
 
-            orderItem.addQuantity(request.getQuantity());
-            long changedTotalPrice = order.getTotalPrice() + request.getQuantity() * product.getPrice();
-            order.updateTotalPrice(changedTotalPrice);
-            order.updateOrderName(createOrderName(order, product));order.updateOrderName(createOrderName(order, product));
+            // 같은 상품이 이미 있을 경우 수량을 누적하지 않고 교체 (재결제 시 금액 중복 방지)
+            long oldAmount = orderItem.getQuantity() * product.getPrice();
+            long newAmount = request.getQuantity() * product.getPrice();
+            orderItem.updateQuantity(request.getQuantity());
+            order.updateTotalPrice(order.getTotalPrice() - oldAmount + newAmount);
+            order.updateOrderName(createOrderName(order, product));
         } else {
 
             throw new CustomException(ErrorMessage.OUT_OF_STOCK);
@@ -181,6 +183,11 @@ public class OrderService {
         Long orderUserId = order.getUser().getId();
         if (!orderUserId.equals(userId)) {
             throw new CustomException(ErrorMessage.ACCESS_DENIED);
+        }
+
+        // 결제 완료된 주문은 삭제 불가 (프론트에서 pendingOrderPk로 잘못 호출하는 상황 방지)
+        if (order.isOrderCompleted()) {
+            return;
         }
 
         orderRepository.delete(order);
