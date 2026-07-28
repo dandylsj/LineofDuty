@@ -63,6 +63,8 @@ public class SecurityConfig {
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
+                        // blue-green 배포 헬스체크
+                        .requestMatchers("/actuator/health").permitAll()
                         //test 컨트롤러단
                         .requestMatchers(
                                 "/api/test/**"

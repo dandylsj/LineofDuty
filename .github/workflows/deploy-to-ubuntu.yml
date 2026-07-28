@@ -1,4 +1,4 @@
-name: Spring Boot → NAS Docker 배포
+name: Spring Boot → Ubuntu Server 배포 (Blue-Green)
 
 on:
   push:
@@ -45,7 +45,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: self-hosted
+    runs-on: [self-hosted, Linux, ubuntu-server]
     permissions:
       contents: read
       packages: read
@@ -105,20 +105,66 @@ jobs:
           echo "TZ=Asia/Seoul" >> .env
           echo "SERVER_FORWARD_HEADERS_STRATEGY=framework" >> .env
 
-      - name: NAS에 자동 배포
+      - name: Blue-Green 무중단 배포
         run: |
-          echo "🧹 기존 컨테이너 정리 중..."
-          docker stop lineofduty-app 2>/dev/null || true
-          docker rm -f lineofduty-app 2>/dev/null || true
+          set -e
+          NETWORK=lineofduty
+          IMAGE=ghcr.io/${{ github.repository_owner }}/lineofduty:latest
 
-          echo "📥 최신 도커 이미지 다운로드 중..."
-          docker pull ghcr.io/${{ github.repository_owner }}/lineofduty:latest
+          echo "📥 최신 이미지 다운로드 중..."
+          docker pull $IMAGE
 
-          echo "🚀 새 컨테이너 실행 중..."
+          # 현재 떠있는 색 확인 → 반대 색으로 배포
+          if docker inspect lineofduty-blue > /dev/null 2>&1; then
+            OLD_COLOR=blue
+            NEW_COLOR=green
+          elif docker inspect lineofduty-green > /dev/null 2>&1; then
+            OLD_COLOR=green
+            NEW_COLOR=blue
+          else
+            OLD_COLOR=""
+            NEW_COLOR=blue
+          fi
+          echo "🎨 기존: ${OLD_COLOR:-없음} → 신규: $NEW_COLOR"
+
+          docker rm -f lineofduty-$NEW_COLOR 2>/dev/null || true
+
+          echo "🚀 신규 컨테이너($NEW_COLOR) 실행 중..."
           docker run -d \
-            --name lineofduty-app \
+            --name lineofduty-$NEW_COLOR \
             --restart always \
-            --network lineofduty \
-            -p 8081:8080 \
+            --network $NETWORK \
             --env-file .env \
-            ghcr.io/${{ github.repository_owner }}/lineofduty:latest
+            $IMAGE
+
+          echo "🩺 헬스체크 대기 중..."
+          IP=$(docker inspect -f '{{ (index .NetworkSettings.Networks "'"$NETWORK"'").IPAddress }}' lineofduty-$NEW_COLOR)
+          SUCCESS=false
+          for i in $(seq 1 18); do
+            if curl -sf -o /dev/null "http://$IP:8080/actuator/health"; then
+              SUCCESS=true
+              break
+            fi
+            echo "  ...대기 중 ($i/18)"
+            sleep 5
+          done
+
+          if [ "$SUCCESS" != "true" ]; then
+            echo "❌ 헬스체크 실패 - 배포 중단, 기존 버전 유지"
+            docker logs lineofduty-$NEW_COLOR --tail 100 || true
+            docker stop lineofduty-$NEW_COLOR || true
+            docker rm lineofduty-$NEW_COLOR || true
+            exit 1
+          fi
+
+          echo "✅ 헬스체크 통과 - nginx 트래픽 전환"
+          echo "server lineofduty-$NEW_COLOR:8080;" > $HOME/nginx/conf.d/upstream.conf
+          docker exec nginx nginx -s reload
+
+          if [ -n "$OLD_COLOR" ]; then
+            echo "🧹 기존 컨테이너($OLD_COLOR) 정리 중... (30초 유예)"
+            docker stop --time 30 lineofduty-$OLD_COLOR || true
+            docker rm lineofduty-$OLD_COLOR || true
+          fi
+
+          docker image prune -f
