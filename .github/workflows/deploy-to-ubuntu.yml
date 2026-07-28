@@ -45,7 +45,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [self-hosted, Linux, ubuntu-server]
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: read
