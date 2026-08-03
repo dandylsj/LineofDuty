@@ -158,8 +158,8 @@ jobs:
           fi
 
           echo "✅ 헬스체크 통과 - nginx 트래픽 전환"
-          echo "server lineofduty-$NEW_COLOR:8080;" > $HOME/nginx/conf.d/upstream.conf
-          docker exec nginx nginx -s reload
+          echo "server lineofduty-$NEW_COLOR:8080;" > $HOME/lineofduty-nginx/conf.d/upstream.inc
+          docker exec lineofduty-nginx nginx -s reload
 
           if [ -n "$OLD_COLOR" ]; then
             echo "🧹 기존 컨테이너($OLD_COLOR) 정리 중... (30초 유예)"
