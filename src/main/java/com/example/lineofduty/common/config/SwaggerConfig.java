@@ -30,8 +30,8 @@ public class SwaggerConfig {
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .servers(List.of(
                         new Server()
-                                .url("https://lsjyahoo.synology.me:8443")
-                                .description("NAS 운영 서버"),
+                                .url("https://lineofduty.dandyhomelab.uk")
+                                .description("우분투 운영 서버"),
                         new Server()
                                 .url("http://localhost:8080")
                                 .description("로컬 개발 서버")
