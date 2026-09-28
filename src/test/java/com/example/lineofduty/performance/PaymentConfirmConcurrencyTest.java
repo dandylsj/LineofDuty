@@ -35,6 +35,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Timer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
@@ -49,8 +51,9 @@ import org.springframework.transaction.support.TransactionTemplate;
  * 결제 승인(confirm) 동시 요청: 재고 정합성 + 토스 API 대기 중 DB 커넥션 점유.
  *
  * <p>재고 30개 상품에 60명이 동시에 결제 승인을 요청한다. 토스 API는 실제로 호출할 수 없으니, 실제 네트워크처럼
- * {@value #TOSS_LATENCY_MS}ms 뒤에 승인 응답을 주는 가짜로 바꿔 끼운다. 동시에 별도 스레드가 50ms마다 가벼운 조회
- * 쿼리를 날려서, 결제가 몰리는 동안 다른 API가 DB 커넥션을 얼마나 기다리는지(커넥션 풀 고갈)를 잰다.
+ * {@value #TOSS_LATENCY_MS}ms 뒤에 승인 응답을 주는 가짜로 바꿔 끼운다. 결제 한 건이 DB 커넥션을 얼마나 오래
+ * 붙잡는지와, 커넥션을 얻으려고 얼마나 기다리는지(커넥션 풀 고갈)를 Hikari 메트릭으로 재고, 별도 스레드가 계속 날리는
+ * 가벼운 조회가 최대 얼마나 밀리는지도 잰다.
  *
  * <p>같은 테스트를 개선 전 커밋과 개선 후 커밋에서 각각 실행해 비교했다(개선 전에는 아래 검증이 실패한다).
  * 실제 MySQL + Redis가 필요해서 {@code PERF_TEST=true}일 때만 실행되고, 별도 스키마(lineofduty_perf)를 쓴다:
@@ -93,6 +96,8 @@ class PaymentConfirmConcurrencyTest {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private TransactionTemplate transactionTemplate;
+    @Autowired
+    private MeterRegistry meterRegistry;
 
     private final AtomicInteger tossApproved = new AtomicInteger();
     private Long productId;
@@ -165,7 +170,7 @@ class PaymentConfirmConcurrencyTest {
                 productRepository.findById(productId);
                 probeMillis.add((System.nanoTime() - start) / 1_000_000.0);
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     return;
                 }
@@ -185,6 +190,13 @@ class PaymentConfirmConcurrencyTest {
                 }
             });
         }
+        Timer usage = meterRegistry.get("hikaricp.connections.usage").timer();
+        Timer acquire = meterRegistry.get("hikaricp.connections.acquire").timer();
+        long usageCountBefore = usage.count();
+        double usageTotalBefore = usage.totalTime(TimeUnit.MILLISECONDS);
+        long acquireCountBefore = acquire.count();
+        double acquireTotalBefore = acquire.totalTime(TimeUnit.MILLISECONDS);
+
         probe.start();
         long start = System.currentTimeMillis();
         ready.countDown();
@@ -196,10 +208,9 @@ class PaymentConfirmConcurrencyTest {
 
         long finalStock = productRepository.findById(productId).orElseThrow().getStock();
         long donePayments = paymentRepository.findAll().stream().filter(p -> p.getStatus() == PaymentStatus.DONE).count();
-        List<Double> sorted = new ArrayList<>(probeMillis);
-        Collections.sort(sorted);
-        double probeP95 = sorted.get((int) Math.ceil(sorted.size() * 0.95) - 1);
-        double probeMax = sorted.get(sorted.size() - 1);
+        double probeMax = probeMillis.stream().mapToDouble(Double::doubleValue).max().orElse(0);
+        double usageAvg = (usage.totalTime(TimeUnit.MILLISECONDS) - usageTotalBefore) / (usage.count() - usageCountBefore);
+        double acquireAvg = (acquire.totalTime(TimeUnit.MILLISECONDS) - acquireTotalBefore) / (acquire.count() - acquireCountBefore);
 
         System.out.printf("%n=== 결제 승인 동시 요청 (재고 %d개, 구매자 %d명, 토스 응답 %dms, 커넥션 풀 %d) ===%n",
                 STOCK, BUYERS, TOSS_LATENCY_MS, HIKARI_POOL_SIZE);
@@ -209,7 +220,9 @@ class PaymentConfirmConcurrencyTest {
                 finalStock, finalStock - (STOCK - donePayments));
         System.out.printf("토스 승인됐지만 DB 실패  : %d건 (돈은 빠져나갔는데 주문은 실패)%n", tossApproved.get() - donePayments);
         System.out.printf("전체 처리 시간          : %,dms%n", elapsed);
-        System.out.printf("동시간대 조회 API 지연   : p95 %.1fms, 최대 %.1fms (%d회 측정)%n", probeP95, probeMax, sorted.size());
+        System.out.printf("DB 커넥션 1회 점유 시간  : 평균 %.1fms, 최대 %.1fms (Hikari usage)%n", usageAvg, usage.max(TimeUnit.MILLISECONDS));
+        System.out.printf("DB 커넥션 획득 대기 시간  : 평균 %.1fms, 최대 %.1fms (Hikari acquire)%n", acquireAvg, acquire.max(TimeUnit.MILLISECONDS));
+        System.out.printf("동시간대 다른 조회 API    : 최대 %.1fms 지연%n", probeMax);
 
         assertThat(donePayments).isEqualTo(STOCK);
         assertThat(finalStock).isZero();

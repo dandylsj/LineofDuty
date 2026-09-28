@@ -27,8 +27,9 @@ public class TossPaymentClient {
 
     private static final String AUTHORIZATION = "Authorization";
     private static final String TOSS_CONFIRM_URL = "https://api.tosspayments.com/v1/payments/confirm";
-    private static final String TOSS_GET_BY_PAYMENTKEY_URL = "https://api.tosspayments.com/v1/payments";
-    private static final String TOSS_GET_BY_ORDERID_URL = "https://api.tosspayments.com/v1/payments/orders";
+    // 예전 코드는 끝에 "/"가 없어서 ".../v1/paymentsXXXX"처럼 잘못된 주소로 조회하고 있었다
+    private static final String TOSS_GET_BY_PAYMENTKEY_URL = "https://api.tosspayments.com/v1/payments/";
+    private static final String TOSS_GET_BY_ORDERID_URL = "https://api.tosspayments.com/v1/payments/orders/";
     private static final String TOSS_CANCEL_URL_FORMAT = "https://api.tosspayments.com/v1/payments/%s/cancel";
 
     private final ObjectMapper objectMapper = new ObjectMapper();
