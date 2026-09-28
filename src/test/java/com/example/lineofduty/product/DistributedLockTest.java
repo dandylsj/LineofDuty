@@ -3,6 +3,7 @@ package com.example.lineofduty.product;
 import com.example.lineofduty.domain.product.Product;
 import com.example.lineofduty.domain.product.repository.ProductRepository;
 import com.example.lineofduty.domain.product.service.ProductService;
+import com.example.lineofduty.common.model.enums.DeliveryType;
 import com.example.lineofduty.common.model.enums.ProductStatus;
 import org.junit.jupiter.api.*;
 import org.redisson.api.RLock;
@@ -38,6 +39,9 @@ class DistributedLockTest {
                 "분산 락 테스트용",
                 10000L,
                 100L,
+                0L,
+                0L,
+                DeliveryType.STANDARD,
                 ProductStatus.ON_SALE
         );
         testProduct = productRepository.save(testProduct);
@@ -243,6 +247,9 @@ class DistributedLockTest {
                 "독립 락 테스트",
                 20000L,
                 200L,
+                0L,
+                0L,
+                DeliveryType.STANDARD,
                 ProductStatus.ON_SALE
         );
         product2 = productRepository.save(product2);

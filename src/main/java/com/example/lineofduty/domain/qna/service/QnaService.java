@@ -83,6 +83,22 @@ public class QnaService {
         return QnaInquiryResponse.from(qna);
     }
 
+    // 질문 단건 조회 (원자적 UPDATE) - 실제 API가 쓰는 방식
+    // 조회수 +1을 "UPDATE ... SET view_count = view_count + 1" 한 문장으로 처리한다. 락을 잡지 않아서 동시 조회가
+    // 서로를 기다리지 않고(비관적 락 대비), 충돌로 실패하는 요청도 없다(낙관적 락 대비). 성능 비교는
+    // performance/QnaViewCountPerformanceTest 참고.
+    @Transactional
+    public QnaInquiryResponse qnaInquiryWithAtomicUpdate(Long qnaId) {
+        if (qnaRepository.increaseViewCount(qnaId) == 0) {
+            throw new CustomException(ErrorMessage.QUESTION_NOT_FOUND);
+        }
+
+        Qna qna = qnaRepository.findById(qnaId)
+                .orElseThrow(() -> new CustomException(ErrorMessage.QUESTION_NOT_FOUND));
+
+        return QnaInquiryResponse.from(qna);
+    }
+
     //질문 목록 조회
     @Transactional(readOnly = true)
     public QnaInquiryListResponse qnaInquiryListResponse(int page, int size, String sort, String keyword) {
