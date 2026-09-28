@@ -40,7 +40,7 @@ public class QnaController {
     @GetMapping("/{qnaId}")
     public ResponseEntity<GlobalResponse> qnaInquiryApi(@PathVariable Long qnaId) {
 
-        QnaInquiryResponse response = qnaService.qnaInquiryWithOptimisticLock(qnaId);
+        QnaInquiryResponse response = qnaService.qnaInquiryWithAtomicUpdate(qnaId);
 
         return ResponseEntity.status(HttpStatus.OK).body(GlobalResponse.success(SuccessMessage.QNA_READ_SUCCESS,response));
 
