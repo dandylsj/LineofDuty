@@ -1,5 +1,6 @@
 package com.example.lineofduty.product;
 
+import com.example.lineofduty.common.model.enums.DeliveryType;
 import com.example.lineofduty.common.model.enums.ProductStatus;
 import com.example.lineofduty.domain.product.Product;
 import com.example.lineofduty.domain.product.repository.ProductRepository;
@@ -38,6 +39,9 @@ class ProductServiceConcurrencyTest {
                 "동시성 테스트용 상품",
                 10000L,
                 100L,
+                0L,
+                0L,
+                DeliveryType.STANDARD,
                 ProductStatus.ON_SALE
         );
         testProduct = productRepository.save(testProduct);

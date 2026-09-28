@@ -12,22 +12,12 @@ import com.example.lineofduty.domain.payment.PaymentStatus;
 import com.example.lineofduty.domain.payment.dto.*;
 import com.example.lineofduty.domain.payment.repository.PaymentRepository;
 import com.example.lineofduty.domain.product.service.ProductFacade;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
-import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -38,12 +28,9 @@ public class PaymentService {
     private final OrderRepository orderRepository;
     private final PaymentRepository paymentRepository;
     private final ProductFacade productFacade;
-
-    @Value("${toss.secret.key}")
-    private String secretKey;
+    private final TossPaymentClient tossPaymentClient;
 
     //토스 response key값 (토스 api 명세서 참고할 것)
-    private static final String AUTHORIZATION = "Authorization";
     private static final String MESSAGE = "message";
     private static final String STATUS = "status";
     private static final String PAYMENT_KEY = "paymentKey";
@@ -52,10 +39,6 @@ public class PaymentService {
     private static final String APPROVED_AT = "approvedAt";
     private static final String ORDER_NAME = "orderName";
     private static final String ORDER_ID = "orderId";
-
-    private static final String TOSS_CONFIRM_URL = "https://api.tosspayments.com/v1/payments/confirm";
-    private static final String TOSS_GET_BY_PAYMENTKEY_URL = "https://api.tosspayments.com/v1/payments";
-    private static final String TOSS_GET_BY_ORDERID_URL = "https://api.tosspayments.com/v1/payments/orders";
 
     @Transactional
     public PaymentCreateResponse createPaymentService(PaymentCreateRequest request, Long userId) {
@@ -126,15 +109,7 @@ public class PaymentService {
         // 토스로 결제 승인 요청 보내
         TossConfirmRequest requestBody = new TossConfirmRequest(payment.getPaymentKey(), payment.getOrderNumber(), payment.getTotalPrice());
 
-        String body = createTossRequestBody(requestBody);
-        HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(TOSS_CONFIRM_URL))
-                .header(AUTHORIZATION, encodeBasicSecretKey(secretKey))
-                .header("Content-Type", "application/json")
-                .method("POST", HttpRequest.BodyPublishers.ofString(body))
-                .build();
-
-        JsonNode rootNode = extractTossResponse(httpRequest);
+        JsonNode rootNode = tossPaymentClient.confirm(requestBody);
 
         // toss에서 에러를 출력할 시 에러 반환
         if (rootNode.has(MESSAGE)) {
@@ -175,13 +150,7 @@ public class PaymentService {
 
         // 토스로 결제 요청 보내
 
-        HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(TOSS_GET_BY_PAYMENTKEY_URL + paymentKey))
-                .header(AUTHORIZATION, encodeBasicSecretKey(secretKey))
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-
-        JsonNode rootNode = extractTossResponse(httpRequest);
+        JsonNode rootNode = tossPaymentClient.getByPaymentKey(paymentKey);
 
         // toss에서 에러를 출력할 시 에러 반환
         if (rootNode.has(MESSAGE)) {
@@ -210,13 +179,7 @@ public class PaymentService {
 
         // 토스로 결제 요청 보내
 
-        HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(TOSS_GET_BY_ORDERID_URL + orderNumber))
-                .header(AUTHORIZATION, encodeBasicSecretKey(secretKey))
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-
-        JsonNode rootNode = extractTossResponse(httpRequest);
+        JsonNode rootNode = tossPaymentClient.getByOrderId(orderNumber);
 
         // toss에서 에러를 출력할 시 에러 반환
         if (rootNode.has(MESSAGE)) {
@@ -266,21 +229,8 @@ public class PaymentService {
             throw new CustomException(ErrorMessage.ALREADY_CANCELED_PAYMENT);
         }
 
-        // 결제 취소 body 생성
-        String tossCancelURL = "https://api.tosspayments.com/v1/payments/" + paymentKey + "/cancel";
-
-        TossCancelRequest requestBody = new TossCancelRequest(request.getCancelReason());
-        String body = createTossRequestBody(requestBody);
-
         // 토스로 결제 취소 요청 보내
-        HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(tossCancelURL))
-                .header(AUTHORIZATION, encodeBasicSecretKey(secretKey))
-                .header("Content-Type", "application/json")
-                .method("POST", HttpRequest.BodyPublishers.ofString(body))
-                .build();
-
-        JsonNode rootNode = extractTossResponse(httpRequest);
+        JsonNode rootNode = tossPaymentClient.cancel(paymentKey, new TossCancelRequest(request.getCancelReason()));
 
         // toss에서 에러를 출력할 시 에러 반환
         if (rootNode.has(MESSAGE)) {
@@ -308,39 +258,4 @@ public class PaymentService {
 
         return PaymentCancelResponse.from(payment);
     }
-
-    private String encodeBasicSecretKey(String secretKey) {
-        return "Basic " + Base64.getEncoder()
-                .encodeToString((secretKey + ":").getBytes(StandardCharsets.UTF_8));
-    }
-
-    private String createTossRequestBody(Object requestBody) {
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        String body;
-        try {
-            body = objectMapper.writeValueAsString(requestBody);
-        } catch (JsonProcessingException e) {
-            throw new CustomException(ErrorMessage.INVALID_REQUEST);
-        }
-        return body;
-    }
-
-    private JsonNode extractTossResponse(HttpRequest httpRequest) {
-        try {
-            HttpResponse<String> response = HttpClient.newHttpClient().send(httpRequest, HttpResponse.BodyHandlers.ofString());
-
-            //response(json형식)를 java객체로 변환해 추출
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            return objectMapper.readTree(response.body());
-        } catch (IOException ie) {   // 결제 조회 실패 시
-            throw new CustomException(ErrorMessage.TOSS_PAYMENT_API_COMMUNICATION_FAILED);
-        } catch (InterruptedException ie) {   // 결제 조회 실패 시
-            Thread.currentThread().interrupt();
-            throw new CustomException(ErrorMessage.TOSS_API_INTERRUPTED);
-        }
-    }
-
 }
