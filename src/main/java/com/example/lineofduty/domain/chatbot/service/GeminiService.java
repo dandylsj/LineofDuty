@@ -30,9 +30,11 @@ public class GeminiService {
     @Value("${gemini.api.key:}")
     private String apiKey;
 
+    // 모델이 지원 종료되면 application.yml 의 gemini.api.model 만 바꾸면 된다
+    @Value("${gemini.api.model:gemini-3.8-flash}")
+    private String model;
 
-    private static final String GEMINI_API_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=%s";
-    private static final String AI_MODEL = "gemini-2.5-flash";
+    private static final String GEMINI_API_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s";
 
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
@@ -83,7 +85,7 @@ public class GeminiService {
             
             // 2. 요청 바디 생성 (System Prompt + Context + User Message)
             String requestBody = createRequestBody(userMessage, context);
-            String url = String.format(GEMINI_API_URL_TEMPLATE, apiKey);
+            String url = String.format(GEMINI_API_URL_TEMPLATE, model, apiKey);
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
@@ -194,7 +196,7 @@ public class GeminiService {
         Map<String, Object> metadata = new HashMap<>();
         metadata.put("tokens", tokens);
         metadata.put("responseTime", responseTime);
-        metadata.put("model", AI_MODEL);
+        metadata.put("model", model);
         return metadata;
     }
 }
